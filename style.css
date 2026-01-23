@@ -310,9 +310,9 @@ body {
 
 .schedule-image-container {
     width: 100%;
-    max-width: 1400px;
+    max-width: none;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0;
 }
 
 .schedule-image {
