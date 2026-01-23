@@ -30,11 +30,8 @@
             <div class="hero-gradient-overlay"></div>
         </div>
         
-        <!-- Floating Particles -->
+        <!-- Floating Particles (Hero only - Global particles added by JS) -->
         <div class="particles" id="particles"></div>
-        
-        <!-- Purple Stage Glow -->
-        <div class="stage-glow"></div>
         
         <!-- Grid Overlay -->
         <div class="grid-overlay"></div>
@@ -86,10 +83,117 @@
         </div>
     </section>
 
-    <!-- Schedule Section (Image) -->
+    <!-- Schedule Section - CODED VERSION -->
     <section class="schedule-section" id="learn">
-        <div class="schedule-image-container animate-on-scroll zoom-in">
-            <img src="schedule.png" alt="5 Days Schedule - AI Income Workshop" class="schedule-image">
+        <div class="container">
+            <!-- Schedule Card -->
+            <div class="schedule-card animate-on-scroll zoom-in">
+                <!-- Badge -->
+                <div class="schedule-badge">
+                    <span class="schedule-badge-icon">📺</span>
+                    <span>5 EPISODES</span>
+                </div>
+
+                <!-- Title -->
+                <h2 class="schedule-title">EVERYTHING YOU'LL LEARN<br>DURING THESE 5 DAYS</h2>
+                <p class="schedule-subtitle">A Comprehensive Look at What You'll Experience in the 5-Day LIVE Workshop</p>
+
+                <!-- Days Grid -->
+                <div class="days-grid">
+                    <!-- Day 1 -->
+                    <div class="day-card animate-on-scroll fade-in" data-delay="0">
+                        <div class="day-header">
+                            <span class="day-icon">🔥</span>
+                            <span class="day-number">DAY 01</span>
+                            <span class="day-bolt">⚡</span>
+                        </div>
+                        <div class="day-meta">
+                            <span>📅 JANUARY 11th</span>
+                            <span>🕐 1 PM EST</span>
+                        </div>
+                        <h3 class="day-title">The Best AI Business<br>Model for 2026</h3>
+                        <p class="day-description">
+                            <span class="highlight-text">✦</span> Learn how to <strong>make money online</strong> by partnering with people who already have <strong>audiences</strong>, while you stay completely <strong>invisible</strong> and use AI to do the heavy lifting.
+                        </p>
+                    </div>
+
+                    <!-- Day 2 -->
+                    <div class="day-card animate-on-scroll fade-in" data-delay="100">
+                        <div class="day-header">
+                            <span class="day-icon">📦</span>
+                            <span class="day-number">DAY 02</span>
+                            <span class="day-bolt">⚡</span>
+                        </div>
+                        <div class="day-meta">
+                            <span>📅 JANUARY 12th</span>
+                            <span>🕐 1 PM EST</span>
+                        </div>
+                        <h3 class="day-title">Making AI your<br>Super Employee</h3>
+                        <p class="day-description">
+                            <span class="highlight-text">✦</span> I'll show how to use AI to almost <strong>fully automate</strong> the best AI-powered business model of 2026, even if you have no previous experience.
+                        </p>
+                    </div>
+
+                    <!-- Day 3 -->
+                    <div class="day-card animate-on-scroll fade-in" data-delay="200">
+                        <div class="day-header">
+                            <span class="day-icon">🚀</span>
+                            <span class="day-number">DAY 03</span>
+                            <span class="day-bolt">⚡</span>
+                        </div>
+                        <div class="day-meta">
+                            <span>📅 JANUARY 13th</span>
+                            <span>🕐 1 PM EST</span>
+                        </div>
+                        <h3 class="day-title">The Simple<br>Launch System</h3>
+                        <p class="day-description">
+                            <span class="highlight-text">✦</span> How to start generating money in a <strong>few days without ever showing your face</strong> using our AI Model.
+                        </p>
+                    </div>
+
+                    <!-- Day 4 -->
+                    <div class="day-card animate-on-scroll fade-in" data-delay="300">
+                        <div class="day-header">
+                            <span class="day-icon">🎁</span>
+                            <span class="day-number">DAY 04</span>
+                            <span class="day-bolt">⚡</span>
+                        </div>
+                        <div class="day-meta">
+                            <span>📅 JANUARY 14th</span>
+                            <span>🕐 1 PM EST</span>
+                        </div>
+                        <h3 class="day-title">The $57.9M<br>Launch Strategy</h3>
+                        <p class="day-description">
+                            <span class="highlight-text">✦</span> A full breakdown of how a <strong>little-known man</strong> generated <strong class="green-text">$57.9M</strong> while staying entirely in the shadows.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Day 5 - Featured -->
+                <div class="day-card-featured animate-on-scroll zoom-in" data-delay="400">
+                    <div class="featured-glow"></div>
+                    <div class="day-header">
+                        <span class="day-icon">▶️</span>
+                        <span class="day-number">DAY 05</span>
+                        <span class="day-bolt">⚡</span>
+                    </div>
+                    <div class="day-meta">
+                        <span>📅 JANUARY 18th</span>
+                        <span>🕐 1 PM EST</span>
+                    </div>
+                    <h3 class="day-title-featured">Building a<br>Business <span class="live-text">LIVE!</span></h3>
+                    <p class="day-description">
+                        <span class="highlight-text">✦</span> It's time to get our hands dirty. I'm going to build an AI online business LIVE in one sitting, walking you through the exact step-by-step process.
+                    </p>
+                </div>
+
+                <!-- Stage Lights Effect -->
+                <div class="stage-lights">
+                    <div class="light light-1"></div>
+                    <div class="light light-2"></div>
+                    <div class="light light-3"></div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -163,7 +267,7 @@
                 <!-- Header -->
                 <div class="proof-header">
                     <h2 class="proof-title">
-                        <span class="highlight-green neon-text-green">$8.9M</span> in Tracked Sales from those who<br>
+                        <span class="highlight-green neon-text-green" data-count="8.9" data-prefix="$" data-suffix="M" data-decimals="1">$0M</span> in Tracked Sales from those who<br>
                         implemented the system last event.
                     </h2>
                     <p class="proof-subtitle">
