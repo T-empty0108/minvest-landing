@@ -284,34 +284,41 @@ body {
 }
 
 /* ==========================================
-   SCROLL ANIMATIONS
+   SCROLL ANIMATIONS - DEFAULT VISIBLE
+   Animations will enhance but not hide content
    ========================================== */
 .animate-on-scroll {
-    opacity: 0;
+    opacity: 1; /* DEFAULT VISIBLE */
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.animate-on-scroll.fade-in {
+/* Only apply initial hidden state when JS is ready */
+.js-ready .animate-on-scroll {
+    opacity: 0;
+}
+
+.js-ready .animate-on-scroll.fade-in {
     transform: translateY(30px);
 }
 
-.animate-on-scroll.slide-up {
+.js-ready .animate-on-scroll.slide-up {
     transform: translateY(50px);
 }
 
-.animate-on-scroll.slide-right {
+.js-ready .animate-on-scroll.slide-right {
     transform: translateX(-50px);
 }
 
-.animate-on-scroll.slide-left {
+.js-ready .animate-on-scroll.slide-left {
     transform: translateX(50px);
 }
 
-.animate-on-scroll.zoom-in {
+.js-ready .animate-on-scroll.zoom-in {
     transform: scale(0.9);
 }
 
-.animate-on-scroll.visible {
+.animate-on-scroll.visible,
+.js-ready .animate-on-scroll.visible {
     opacity: 1;
     transform: translateY(0) translateX(0) scale(1);
 }
