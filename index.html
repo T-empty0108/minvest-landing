@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
@@ -23,6 +23,9 @@
             <div class="hero-gradient-overlay"></div>
         </div>
         
+        <!-- Floating Particles -->
+        <div class="particles" id="particles"></div>
+        
         <!-- Purple Stage Glow -->
         <div class="stage-glow"></div>
         
@@ -32,39 +35,43 @@
         <div class="container">
             <div class="hero-content">
                 <!-- Logo & Badge -->
-                <div class="brand-section">
+                <div class="brand-section animate-on-scroll fade-in">
                     <div class="logo">
                         <span class="logo-icon">✦AI</span>
                         <span class="logo-text">INCOME<br>WORKSHOP</span>
                     </div>
-                    <div class="event-badge">
+                    <div class="event-badge glass-card">
                         <span class="badge-dot"></span>
                         LIVE VIRTUAL EVENT: JAN 11th - JAN 18th
                     </div>
                 </div>
 
                 <!-- Headline -->
-                <h1 class="hero-headline">
+                <h1 class="hero-headline animate-on-scroll fade-in" data-delay="100">
                     5 Days to <span class="gradient-text">Copy My AI System</span> and <span class="gradient-text-alt">Start Generating Income Online</span> in 2026
                 </h1>
 
-                <p class="hero-subheadline">
+                <p class="hero-subheadline animate-on-scroll fade-in" data-delay="200">
                     Watch over my shoulder as I show you the exact system that generated $8.9M in 90 days for those who applied last time.
                 </p>
 
                 <!-- CTA Button -->
-                <a href="#register" class="cta-button primary">
-                    <span>GET MY FREE TICKET</span>
-                </a>
+                <div class="animate-on-scroll fade-in" data-delay="300">
+                    <a href="#register" class="cta-button-wrapper">
+                        <span class="cta-button-bg"></span>
+                        <span class="cta-button-text">GET MY FREE TICKET</span>
+                        <span class="cta-shine"></span>
+                    </a>
+                </div>
 
                 <!-- Trust Badges -->
-                <div class="trust-badges">
-                    <div class="trust-badge">
-                        <span class="badge-icon">🚫</span>
+                <div class="trust-badges animate-on-scroll fade-in" data-delay="400">
+                    <div class="trust-badge glass-card">
+                        <span class="badge-icon floating">🚫</span>
                         <span>No showing your face</span>
                     </div>
-                    <div class="trust-badge">
-                        <span class="badge-icon">✅</span>
+                    <div class="trust-badge glass-card">
+                        <span class="badge-icon floating" style="animation-delay: 0.5s;">✅</span>
                         <span>No experience needed</span>
                     </div>
                 </div>
@@ -74,7 +81,7 @@
 
     <!-- Schedule Section (Image) -->
     <section class="schedule-section" id="learn">
-        <div class="schedule-image-container">
+        <div class="schedule-image-container animate-on-scroll zoom-in">
             <img src="schedule.png" alt="5 Days Schedule - AI Income Workshop" class="schedule-image">
         </div>
     </section>
@@ -82,8 +89,8 @@
     <!-- About/Story Section -->
     <section class="story-section" id="story">
         <div class="container">
-            <h2 class="story-headline">
-                After <span class="highlight">10 years</span> and <span class="gradient-text">$100M+ earned</span>,<br>
+            <h2 class="story-headline animate-on-scroll fade-in">
+                After <span class="highlight neon-text">10 years</span> and <span class="gradient-text">$100M+ earned</span>,<br>
                 I'm about to uncover one of the<br>
                 biggest waves in the online world.
             </h2>
@@ -93,13 +100,13 @@
     <!-- Benefits Section -->
     <section class="benefits-section" id="benefits">
         <div class="container">
-            <div class="benefits-intro">
+            <div class="benefits-intro animate-on-scroll fade-in">
                 <p class="benefits-lead">And how you can take advantage of it now if...</p>
             </div>
 
             <div class="benefits-grid">
                 <!-- Benefit 1 -->
-                <div class="benefit-card">
+                <div class="benefit-card gradient-border-card animate-on-scroll slide-up" data-delay="0">
                     <div class="benefit-image">
                         <img src="https://placehold.co/400x300/1a1a2e/ffffff?text=Extra+Income" alt="Extra Income">
                     </div>
@@ -108,7 +115,7 @@
                 </div>
 
                 <!-- Benefit 2 -->
-                <div class="benefit-card">
+                <div class="benefit-card gradient-border-card animate-on-scroll slide-up" data-delay="100">
                     <div class="benefit-image">
                         <img src="https://placehold.co/400x300/1a1a2e/ffffff?text=Geographic+Freedom" alt="Geographic Freedom">
                     </div>
@@ -117,7 +124,7 @@
                 </div>
 
                 <!-- Benefit 3 -->
-                <div class="benefit-card">
+                <div class="benefit-card gradient-border-card animate-on-scroll slide-up" data-delay="200">
                     <div class="benefit-image">
                         <img src="https://placehold.co/400x300/1a1a2e/ffffff?text=Time+Freedom" alt="Time Freedom">
                     </div>
@@ -126,28 +133,30 @@
                 </div>
             </div>
 
-            <p class="benefits-cta-text">And just need to catch this AI wave method right now, before it's too late.</p>
+            <p class="benefits-cta-text animate-on-scroll fade-in">And just need to catch this AI wave method right now, before it's too late.</p>
 
-            <div class="text-center">
-                <a href="#register" class="cta-button primary">
-                    <span>GET MY FREE TICKET</span>
+            <div class="text-center animate-on-scroll fade-in">
+                <a href="#register" class="cta-button-wrapper">
+                    <span class="cta-button-bg"></span>
+                    <span class="cta-button-text">GET MY FREE TICKET</span>
+                    <span class="cta-shine"></span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof Section - REDESIGNED -->
+    <!-- Social Proof Section -->
     <section class="proof-section" id="proof">
         <!-- Background Glow Effects -->
         <div class="proof-bg-glow"></div>
         
         <div class="container">
             <!-- Main Card Container -->
-            <div class="proof-card">
+            <div class="proof-card glass-card gradient-border-card animate-on-scroll zoom-in">
                 <!-- Header -->
                 <div class="proof-header">
                     <h2 class="proof-title">
-                        <span class="highlight-green">$8.9M</span> in Tracked Sales from those who<br>
+                        <span class="highlight-green neon-text-green">$8.9M</span> in Tracked Sales from those who<br>
                         implemented the system last event.
                     </h2>
                     <p class="proof-subtitle">
@@ -156,115 +165,164 @@
                 </div>
 
                 <!-- Dashboard Image Placeholder -->
-                <div class="dashboard-container">
-                    <!-- Thay thế src bằng ảnh thật của bạn -->
+                <div class="dashboard-container animate-on-scroll fade-in" data-delay="200">
                     <img src="dashboard.png" alt="$8,911,125.00 Dashboard" class="dashboard-image">
-                    <!-- Nếu chưa có ảnh, sẽ hiển thị placeholder -->
                 </div>
 
                 <!-- Features Section -->
                 <div class="features-box">
-                    <h3 class="features-title">For the AI Income Workshop, we upgraded the method to show you:</h3>
+                    <h3 class="features-title animate-on-scroll fade-in">For the AI Income Workshop, we upgraded the method to show you:</h3>
                     
                     <ul class="features-list">
-                        <li>
-                            <div class="feature-icon">
+                        <li class="animate-on-scroll slide-right" data-delay="0">
+                            <div class="feature-icon icon-animate">
                                 <span>💰</span>
                             </div>
                             <p>The fastest way to start making money online in 2026, without building an audience, spending on ads, or creating your own product.</p>
                         </li>
-                        <li>
-                            <div class="feature-icon">
+                        <li class="animate-on-scroll slide-right" data-delay="100">
+                            <div class="feature-icon icon-animate">
                                 <span>🤖</span>
                             </div>
                             <p>How AI does 90% of the heavy lifting for you (even if you have zero technical skills or experience).</p>
                         </li>
-                        <li>
-                            <div class="feature-icon">
+                        <li class="animate-on-scroll slide-right" data-delay="200">
+                            <div class="feature-icon icon-animate">
                                 <span>💡</span>
                             </div>
                             <p>The "not so obvious" reason why most people who are trying to teach you how to make money online are likely wrong.</p>
                         </li>
-                        <li>
-                            <div class="feature-icon">
+                        <li class="animate-on-scroll slide-right" data-delay="300">
+                            <div class="feature-icon icon-animate">
                                 <span>📈</span>
                             </div>
                             <p>A proven system for generating consistent sales without spending money on advertising, paid traffic, or marketing campaigns.</p>
                         </li>
-                        <li>
-                            <div class="feature-icon">
+                        <li class="animate-on-scroll slide-right" data-delay="400">
+                            <div class="feature-icon icon-animate">
                                 <span>👥</span>
                             </div>
-                            <p>The "audience shortcut" that lets you tap into 20,000-500,000 buyers overnight, without spending 2-3 years building your own following (or posting a single piece of content).</p>
+                            <p>The "audience shortcut" that lets you tap into 20,000-500,000 buyers overnight, without spending 2-3 years building your own following.</p>
                         </li>
                     </ul>
                 </div>
 
                 <!-- CTA Button -->
-                <div class="proof-cta">
-                    <a href="#register" class="cta-button primary large">
-                        <span>GET MY FREE TICKET</span>
+                <div class="proof-cta animate-on-scroll fade-in">
+                    <a href="#register" class="cta-button-wrapper large">
+                        <span class="cta-button-bg"></span>
+                        <span class="cta-button-text">GET MY FREE TICKET</span>
+                        <span class="cta-shine"></span>
                     </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Timeline Section -->
+    <!-- Timeline Section - ZIGZAG LAYOUT -->
     <section class="timeline-section" id="timeline">
         <div class="container">
-            <div class="timeline">
-                <!-- Timeline Item 1 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">✦</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">It All Started With a Promise to My Mom</h3>
-                        <p class="timeline-text">At 16, all I wanted was to provide for my mom. I promised her life would be different. Built a six-figure-per-month agency and made sure she never had to worry about money again.</p>
+            <h2 class="timeline-main-title animate-on-scroll fade-in">Why You Should Listen To Me</h2>
+            
+            <div class="timeline-zigzag">
+                <!-- Timeline Line -->
+                <div class="timeline-line">
+                    <div class="timeline-line-inner"></div>
+                </div>
+
+                <!-- Item 1 - Image Left -->
+                <div class="timeline-item-zigzag animate-on-scroll fade-in" data-delay="0">
+                    <div class="timeline-image-side">
+                        <div class="timeline-image-wrapper gradient-border-card">
+                            <img src="timeline-1.png" alt="Promise to Mom" class="timeline-img">
+                        </div>
+                    </div>
+                    <div class="timeline-marker-zigzag">
+                        <span class="marker-icon">✦</span>
+                    </div>
+                    <div class="timeline-content-side">
+                        <h3 class="timeline-title-zigzag gradient-text-pink">It All Started With a Promise to My Mom</h3>
+                        <p class="timeline-text-zigzag">At 16, all I wanted was to provide for my mom. I promised her life would be different. Built a six-figure-per-month agency and made sure she never had to worry about money again.</p>
                     </div>
                 </div>
 
-                <!-- Timeline Item 2 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">✦</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Turned My Agency Into a Multi-Million $ Digital Product</h3>
-                        <p class="timeline-text">After scaling my agency successfully, hundreds of people reached out asking me to teach them how I did it. So I created my first digital product, a complete system for building agencies.</p>
+                <!-- Item 2 - Image Right -->
+                <div class="timeline-item-zigzag reverse animate-on-scroll fade-in" data-delay="100">
+                    <div class="timeline-content-side">
+                        <h3 class="timeline-title-zigzag gradient-text-pink">Turned My Agency Into a Multi-Million $ Digital Product</h3>
+                        <p class="timeline-text-zigzag">After scaling my agency successfully, hundreds of people reached out asking me to teach them how I did it. So I created my first digital product, a complete system for building agencies. It sold millions and created some of the most documented success stories in the entire industry.</p>
+                    </div>
+                    <div class="timeline-marker-zigzag">
+                        <span class="marker-icon">✦</span>
+                    </div>
+                    <div class="timeline-image-side">
+                        <div class="timeline-image-wrapper gradient-border-card">
+                            <img src="timeline-2.png" alt="Agency Navigator" class="timeline-img">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Timeline Item 3 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">✦</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Co-Owner of a Platform Where Users Earned $2B+ From Online Sales</h3>
-                        <p class="timeline-text">I saw an opportunity in the creator economy platform space and invested heavily in Whop, a company that lets people sell digital products and run online businesses with zero hassle.</p>
+                <!-- Item 3 - Image Left -->
+                <div class="timeline-item-zigzag animate-on-scroll fade-in" data-delay="200">
+                    <div class="timeline-image-side">
+                        <div class="timeline-image-wrapper gradient-border-card">
+                            <img src="timeline-3.png" alt="Whop Platform" class="timeline-img">
+                        </div>
+                    </div>
+                    <div class="timeline-marker-zigzag">
+                        <span class="marker-icon">✦</span>
+                    </div>
+                    <div class="timeline-content-side">
+                        <h3 class="timeline-title-zigzag gradient-text-pink">Co-Owner of a Platform Where Users Earned $2B+ From Online Sales</h3>
+                        <p class="timeline-text-zigzag">I saw an opportunity in the creator economy platform space and invested heavily in Whop, a company that lets people sell digital products and run online businesses with zero hassle. Today, it's processed over $2 billion in payments, with thousands of creators using AI to scale their income.</p>
                     </div>
                 </div>
 
-                <!-- Timeline Item 4 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">✦</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">I'm Not Just a Co-Owner, I Also Hold The Sales Record on the Platform</h3>
-                        <p class="timeline-text">I'm Whop's biggest power user. I've shattered every single record: highest revenue in 1 day, 7 days, and 30 days.</p>
+                <!-- Item 4 - Image Right -->
+                <div class="timeline-item-zigzag reverse animate-on-scroll fade-in" data-delay="300">
+                    <div class="timeline-content-side">
+                        <h3 class="timeline-title-zigzag gradient-text-pink">I'm Not Just a Co-Owner, I Also Hold The Sales Record on the Platform</h3>
+                        <p class="timeline-text-zigzag">I'm Whop's biggest power user. I've shattered every single record: highest revenue in 1 day, 7 days, and 30 days. Why? Because I don't just teach systems, I run them myself, live in the market, every single day.</p>
+                    </div>
+                    <div class="timeline-marker-zigzag">
+                        <span class="marker-icon">✦</span>
+                    </div>
+                    <div class="timeline-image-side">
+                        <div class="timeline-image-wrapper gradient-border-card">
+                            <img src="timeline-4.png" alt="Sales Record Certificate" class="timeline-img">
+                        </div>
                     </div>
                 </div>
 
-                <!-- Timeline Item 5 -->
-                <div class="timeline-item">
-                    <div class="timeline-marker">✦</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Acquired Consulting.com</h3>
-                        <p class="timeline-text">Acquired Consulting.com, one of the most successful online education companies ever. Clients paid $80M+ to access their Consulting programs before my acquisition.</p>
+                <!-- Item 5 - Image Left -->
+                <div class="timeline-item-zigzag animate-on-scroll fade-in" data-delay="400">
+                    <div class="timeline-image-side">
+                        <div class="timeline-image-wrapper gradient-border-card">
+                            <img src="timeline-5.png" alt="Consulting.com" class="timeline-img">
+                        </div>
+                    </div>
+                    <div class="timeline-marker-zigzag">
+                        <span class="marker-icon">✦</span>
+                    </div>
+                    <div class="timeline-content-side">
+                        <h3 class="timeline-title-zigzag gradient-text-pink">Acquired Consulting.com</h3>
+                        <p class="timeline-text-zigzag">Acquired Consulting.com, one of the most successful online education companies ever. Clients paid $80M+ to access their Consulting programs before my acquisition, and now I'm scaling it even further.</p>
                     </div>
                 </div>
 
-                <!-- Timeline Item 6 -->
-                <div class="timeline-item highlight-item">
-                    <div class="timeline-marker">✦</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Registrants Who Implemented the System last time generated $8.9M in 90 Days</h3>
-                        <p class="timeline-text">A few months ago, I hosted a challenge showing people how to make money online with AI. Those who actually took action generated $8.9 million in tracked earnings in just 90 days.</p>
+                <!-- Item 6 - Image Right (Highlight) -->
+                <div class="timeline-item-zigzag reverse highlight animate-on-scroll fade-in" data-delay="500">
+                    <div class="timeline-content-side">
+                        <h3 class="timeline-title-zigzag gradient-text-pink">Registrants Who Implemented the System last time generated $8.9M in 90 Days</h3>
+                        <p class="timeline-text-zigzag">A few months ago, I hosted a challenge showing people how to make money online with AI. Those who actually took action generated $8.9 million in tracked earnings in just 90 days.</p>
+                    </div>
+                    <div class="timeline-marker-zigzag">
+                        <span class="marker-icon">✦</span>
+                    </div>
+                    <div class="timeline-image-side">
+                        <div class="timeline-image-wrapper gradient-border-card glow-green">
+                            <img src="timeline-6.png" alt="$8.9M Dashboard" class="timeline-img">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -274,16 +332,18 @@
     <!-- Final CTA Section -->
     <section class="cta-section" id="register">
         <div class="container">
-            <div class="cta-content">
+            <div class="cta-content animate-on-scroll zoom-in">
                 <h2 class="cta-title">Claim Your Spot Below</h2>
                 <p class="cta-subtitle">You'll get the confirmation sent to your email address.</p>
 
                 <form class="register-form" id="registerForm">
                     <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required class="glass-input">
                     </div>
-                    <button type="submit" class="cta-button primary large">
-                        <span>GET MY FREE TICKET</span>
+                    <button type="submit" class="cta-button-wrapper large">
+                        <span class="cta-button-bg"></span>
+                        <span class="cta-button-text">GET MY FREE TICKET</span>
+                        <span class="cta-shine"></span>
                     </button>
                 </form>
 
