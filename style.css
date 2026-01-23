@@ -301,35 +301,34 @@ body {
 }
 
 /* ==========================================
-   Schedule Section (Image)
+   Schedule Section (Image) - LARGER SIZE
    ========================================== */
 .schedule-section {
     background: var(--color-bg-primary);
-    padding: 0;
+    padding: 60px 0;
 }
 
 .schedule-image-container {
     width: 100%;
-    max-width: 900px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 0 20px;
 }
 
 .schedule-image {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 20px;
 }
 
 /* Responsive for Schedule Image */
 @media (max-width: 768px) {
-    .schedule-image-container {
-        padding: 20px 15px;
+    .schedule-section {
+        padding: 40px 0;
     }
     
-    .schedule-image {
-        border-radius: 12px;
+    .schedule-image-container {
+        padding: 0 15px;
     }
 }
 
