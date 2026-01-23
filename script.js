@@ -1,116 +1,148 @@
-/* ========================================
-   AI Income Workshop - Landing Page Scripts
-   Animations & Interactive Effects
-   ======================================== */
+/* ==========================================
+   AI Income Workshop - JavaScript
+   Animations, Particles, Interactions
+   ========================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all modules
+    // Add js-ready class to enable animations
+    // This ensures content is visible even if JS fails
+    document.body.classList.add('js-ready');
+    
+    // Initialize all features
     initScrollAnimations();
-    initSmoothScroll();
+    initParticles();
     initFormHandler();
-    initParticleEffect();
-    initCounterAnimation();
+    initButtonEffects();
 });
 
-/* ========================================
-   Scroll Animations (Fade In)
-   ======================================== */
+/* ==========================================
+   SCROLL ANIMATIONS
+   ========================================== */
 function initScrollAnimations() {
-    // Add fade-in class to elements we want to animate
-    const animatedElements = document.querySelectorAll(
-        '.day-card, .benefit-card, .timeline-item, .proof-header, .features-section, .cta-content'
-    );
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
     
-    animatedElements.forEach(el => {
-        el.classList.add('fade-in');
-    });
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
     
-    // Intersection Observer for fade-in animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-    
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
-}
-
-/* ========================================
-   Smooth Scroll
-   ======================================== */
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-}
-
-/* ========================================
-   Form Handler
-   ======================================== */
-function initFormHandler() {
-    const form = document.getElementById('registerForm');
-    
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = document.getElementById('email').value;
-            const button = form.querySelector('button[type="submit"]');
-            const originalText = button.innerHTML;
-            
-            // Show loading state
-            button.innerHTML = '<span>Processing...</span>';
-            button.disabled = true;
-            
-            // Simulate form submission (replace with actual API call)
-            setTimeout(() => {
-                // Success state
-                button.innerHTML = '<span>✓ You\'re In!</span>';
-                button.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                const element = entry.target;
+                const delay = element.dataset.delay || 0;
                 
-                // Show success message
-                showNotification('Success! Check your email for confirmation.', 'success');
-                
-                // Reset form
-                form.reset();
-                
-                // Reset button after delay
                 setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.disabled = false;
-                    button.style.background = '';
-                }, 3000);
-            }, 1500);
+                    element.classList.add('visible');
+                }, delay);
+                
+                // Unobserve after animation
+                observer.unobserve(element);
+            }
         });
+    }, observerOptions);
+    
+    animatedElements.forEach(element => {
+        observer.observe(element);
+    });
+}
+
+/* ==========================================
+   FLOATING PARTICLES
+   ========================================== */
+function initParticles() {
+    const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+    
+    const particleCount = 30;
+    
+    for (let i = 0; i < particleCount; i++) {
+        createParticle(particlesContainer);
     }
 }
 
-/* ========================================
-   Notification System
-   ======================================== */
+function createParticle(container) {
+    const particle = document.createElement('div');
+    particle.classList.add('particle');
+    
+    // Random properties
+    const size = Math.random() * 4 + 2;
+    const left = Math.random() * 100;
+    const duration = Math.random() * 15 + 10;
+    const delay = Math.random() * 10;
+    const opacity = Math.random() * 0.5 + 0.3;
+    
+    // Random color (purple or pink)
+    const colors = [
+        'rgba(139, 92, 246, 0.6)',
+        'rgba(236, 72, 153, 0.6)',
+        'rgba(168, 85, 247, 0.6)',
+        'rgba(34, 197, 94, 0.4)'
+    ];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    
+    particle.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        left: ${left}%;
+        background: ${color};
+        opacity: ${opacity};
+        animation-duration: ${duration}s;
+        animation-delay: ${delay}s;
+        box-shadow: 0 0 ${size * 2}px ${color};
+    `;
+    
+    container.appendChild(particle);
+}
+
+/* ==========================================
+   FORM HANDLER
+   ========================================== */
+function initFormHandler() {
+    const form = document.getElementById('registerForm');
+    if (!form) return;
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value;
+        const button = form.querySelector('.cta-button-wrapper');
+        const originalText = button.querySelector('.cta-button-text').textContent;
+        
+        // Show loading state
+        button.querySelector('.cta-button-text').textContent = 'REGISTERING...';
+        button.style.pointerEvents = 'none';
+        
+        // Simulate API call
+        setTimeout(() => {
+            // Show success
+            button.querySelector('.cta-button-text').textContent = '✓ REGISTERED!';
+            button.style.background = 'linear-gradient(90deg, #22c55e, #16a34a)';
+            
+            // Show notification
+            showNotification('Success! Check your email for confirmation.', 'success');
+            
+            // Reset after 3 seconds
+            setTimeout(() => {
+                button.querySelector('.cta-button-text').textContent = originalText;
+                button.style.pointerEvents = 'auto';
+                button.style.background = '';
+                form.reset();
+            }, 3000);
+        }, 1500);
+    });
+}
+
+/* ==========================================
+   NOTIFICATION
+   ========================================== */
 function showNotification(message, type = 'info') {
-    // Remove existing notifications
+    // Remove existing notification
     const existing = document.querySelector('.notification');
     if (existing) existing.remove();
     
-    // Create notification element
+    // Create notification
     const notification = document.createElement('div');
     notification.className = `notification notification-${type}`;
     notification.innerHTML = `
@@ -124,199 +156,186 @@ function showNotification(message, type = 'info') {
         top: 20px;
         right: 20px;
         padding: 16px 24px;
-        background: ${type === 'success' ? 'linear-gradient(135deg, #22c55e, #16a34a)' : '#8b5cf6'};
-        color: white;
         border-radius: 12px;
         display: flex;
         align-items: center;
         gap: 12px;
         font-size: 14px;
         font-weight: 600;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         z-index: 9999;
         transform: translateX(120%);
         transition: transform 0.3s ease;
+        background: ${type === 'success' ? 'linear-gradient(135deg, #22c55e, #16a34a)' : '#8b5cf6'};
+        color: white;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     `;
     
     document.body.appendChild(notification);
     
-    // Animate in
+    // Show notification
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
     }, 100);
     
-    // Remove after delay
+    // Hide notification
     setTimeout(() => {
         notification.style.transform = 'translateX(120%)';
         setTimeout(() => notification.remove(), 300);
     }, 4000);
 }
 
-/* ========================================
-   Particle Effect
-   ======================================== */
-function initParticleEffect() {
-    const hero = document.querySelector('.hero');
-    if (!hero) return;
+/* ==========================================
+   BUTTON EFFECTS
+   ========================================== */
+function initButtonEffects() {
+    const buttons = document.querySelectorAll('.cta-button-wrapper');
     
-    // Create particle container
-    const particleContainer = document.createElement('div');
-    particleContainer.className = 'particle-container';
-    particleContainer.style.cssText = `
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: 0;
-    `;
-    hero.appendChild(particleContainer);
-    
-    // Create particles
-    for (let i = 0; i < 30; i++) {
-        createParticle(particleContainer);
-    }
+    buttons.forEach(button => {
+        // Ripple effect on click
+        button.addEventListener('click', function(e) {
+            // Only for non-link buttons or if it's a form submit
+            if (this.tagName === 'BUTTON' || this.getAttribute('href') === '#register') {
+                createRipple(e, this);
+            }
+        });
+        
+        // Mouse move effect for glow
+        button.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            this.style.setProperty('--mouse-x', `${x}px`);
+            this.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
 }
 
-function createParticle(container) {
-    const particle = document.createElement('div');
+function createRipple(event, element) {
+    const ripple = document.createElement('span');
+    const rect = element.getBoundingClientRect();
     
-    // Random properties
-    const size = Math.random() * 4 + 2;
-    const left = Math.random() * 100;
-    const delay = Math.random() * 5;
-    const duration = Math.random() * 10 + 10;
-    const opacity = Math.random() * 0.5 + 0.2;
+    const size = Math.max(rect.width, rect.height);
+    const x = event.clientX - rect.left - size / 2;
+    const y = event.clientY - rect.top - size / 2;
     
-    particle.style.cssText = `
+    ripple.style.cssText = `
         position: absolute;
         width: ${size}px;
         height: ${size}px;
-        background: rgba(139, 92, 246, ${opacity});
+        left: ${x}px;
+        top: ${y}px;
+        background: rgba(255, 255, 255, 0.3);
         border-radius: 50%;
-        left: ${left}%;
-        bottom: -10px;
-        animation: floatUp ${duration}s linear infinite;
-        animation-delay: ${delay}s;
-        box-shadow: 0 0 ${size * 2}px rgba(139, 92, 246, 0.5);
+        transform: scale(0);
+        animation: ripple-animation 0.6s ease-out;
+        pointer-events: none;
+        z-index: 10;
     `;
     
-    container.appendChild(particle);
+    element.appendChild(ripple);
+    
+    setTimeout(() => ripple.remove(), 600);
 }
 
-// Add particle animation style
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes floatUp {
-        0% {
-            transform: translateY(0) translateX(0);
-            opacity: 0;
-        }
-        10% {
-            opacity: 1;
-        }
-        90% {
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px);
+// Add ripple animation CSS
+const rippleStyle = document.createElement('style');
+rippleStyle.textContent = `
+    @keyframes ripple-animation {
+        to {
+            transform: scale(2);
             opacity: 0;
         }
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(rippleStyle);
 
-/* ========================================
-   Counter Animation
-   ======================================== */
-function initCounterAnimation() {
-    const counter = document.querySelector('.dashboard-amount');
-    if (!counter) return;
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(counter, 0, 8911125, 2000);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    observer.observe(counter);
-}
-
-function animateCounter(element, start, end, duration) {
-    const startTime = performance.now();
-    
-    function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        // Easing function
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        const current = Math.floor(start + (end - start) * easeOut);
-        
-        element.textContent = '$' + current.toLocaleString('en-US', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        });
-        
-        if (progress < 1) {
-            requestAnimationFrame(update);
+/* ==========================================
+   SMOOTH SCROLL FOR ANCHOR LINKS
+   ========================================== */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
         }
-    }
-    
-    requestAnimationFrame(update);
-}
-
-/* ========================================
-   Hover Effects Enhancement
-   ======================================== */
-document.querySelectorAll('.day-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-8px) scale(1.02)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = '';
     });
 });
 
-/* ========================================
-   Parallax Effect for Hero
-   ======================================== */
+/* ==========================================
+   PARALLAX EFFECT ON SCROLL (subtle)
+   ========================================== */
+let ticking = false;
+
 window.addEventListener('scroll', function() {
-    const hero = document.querySelector('.hero');
+    if (!ticking) {
+        window.requestAnimationFrame(function() {
+            updateParallax();
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+function updateParallax() {
     const scrolled = window.pageYOffset;
     
-    if (hero && scrolled < window.innerHeight) {
-        const heroImage = hero.querySelector('.hero-image-container');
-        const glowOrbs = hero.querySelectorAll('.glow-orb');
-        
-        if (heroImage) {
-            heroImage.style.transform = `translateY(${scrolled * 0.1}px)`;
-        }
-        
-        glowOrbs.forEach((orb, index) => {
-            const speed = 0.05 + (index * 0.02);
-            orb.style.transform = `translateY(${scrolled * speed}px)`;
-        });
+    // Subtle parallax for hero elements
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent && scrolled < window.innerHeight) {
+        heroContent.style.transform = `translateY(${scrolled * 0.1}px)`;
+        heroContent.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
     }
-});
-
-/* ========================================
-   Mobile Menu (if needed later)
-   ======================================== */
-function initMobileMenu() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mobileMenu = document.querySelector('.mobile-menu');
     
-    if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
+    // Glow effects intensity based on scroll
+    const stageGlow = document.querySelector('.stage-glow');
+    if (stageGlow && scrolled < window.innerHeight) {
+        const intensity = 1 - (scrolled / window.innerHeight) * 0.5;
+        stageGlow.style.opacity = intensity;
     }
 }
+
+/* ==========================================
+   ICON HOVER ANIMATIONS
+   ========================================== */
+document.querySelectorAll('.icon-animate').forEach(icon => {
+    icon.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.1) rotate(5deg)';
+    });
+    
+    icon.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1) rotate(0deg)';
+    });
+});
+
+/* ==========================================
+   LAZY LOADING FOR IMAGES
+   ========================================== */
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+/* ==========================================
+   CONSOLE EASTER EGG
+   ========================================== */
+console.log('%c✦ AI Income Workshop', 'font-size: 24px; font-weight: bold; color: #8b5cf6;');
+console.log('%cJoin 5 Days to Copy My AI System!', 'font-size: 14px; color: #22c55e;');
