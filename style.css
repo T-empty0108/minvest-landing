@@ -84,7 +84,7 @@ body {
 }
 
 /* ==========================================
-   Hero Section - New Design
+   Hero Section
    ========================================== */
 .hero {
     position: relative;
@@ -301,149 +301,36 @@ body {
 }
 
 /* ==========================================
-   Learn Section (What You'll Learn)
+   Schedule Section (Image)
    ========================================== */
-.learn-section {
-    padding: var(--section-padding);
+.schedule-section {
     background: var(--color-bg-primary);
+    padding: 0;
 }
 
-.section-header {
-    text-align: center;
-    margin-bottom: 60px;
-}
-
-.section-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--color-bg-card);
-    padding: 8px 16px;
-    border-radius: 50px;
-    font-size: 14px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(139, 92, 246, 0.2);
-}
-
-.section-title {
-    font-size: clamp(28px, 4vw, 42px);
-    font-weight: 700;
-    margin-bottom: 15px;
-}
-
-.section-subtitle {
-    font-size: 16px;
-    color: var(--color-text-secondary);
-    max-width: 600px;
+.schedule-image-container {
+    width: 100%;
+    max-width: 900px;
     margin: 0 auto;
+    padding: 40px 20px;
 }
 
-/* Days Grid */
-.days-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+.schedule-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 20px;
 }
 
-.day-card {
-    background: var(--color-bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 24px;
-    transition: var(--transition-normal);
-    position: relative;
-    overflow: hidden;
-}
-
-.day-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(139, 92, 246, 0.3);
-    box-shadow: var(--glow-purple);
-}
-
-.day-card.featured {
-    grid-column: span 2;
-    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(99, 102, 241, 0.1));
-    border-color: rgba(139, 92, 246, 0.4);
-}
-
-.featured-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.2), transparent 50%);
-    pointer-events: none;
-}
-
-.day-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 15px;
-}
-
-.day-icon {
-    font-size: 24px;
-}
-
-.day-number {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--color-accent-purple);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.live-indicator {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: rgba(239, 68, 68, 0.2);
-    padding: 4px 10px;
-    border-radius: 50px;
-    font-size: 12px;
-    font-weight: 600;
-    color: #ef4444;
-}
-
-.live-dot {
-    width: 6px;
-    height: 6px;
-    background: #ef4444;
-    border-radius: 50%;
-    animation: pulse-dot 1.5s ease-in-out infinite;
-}
-
-.lightning {
-    color: #fbbf24;
-}
-
-.day-date {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: var(--color-text-muted);
-    margin-bottom: 15px;
-}
-
-.day-title {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: var(--color-text-primary);
-}
-
-.day-title.featured-title {
-    font-size: 22px;
-}
-
-.day-description {
-    font-size: 14px;
-    color: var(--color-text-secondary);
-    line-height: 1.5;
+/* Responsive for Schedule Image */
+@media (max-width: 768px) {
+    .schedule-image-container {
+        padding: 20px 15px;
+    }
+    
+    .schedule-image {
+        border-radius: 12px;
+    }
 }
 
 /* ==========================================
@@ -572,7 +459,7 @@ body {
 
 .proof-image {
     max-width: 800px;
-    margin: 0 auto;
+    margin: 0 auto 40px;
 }
 
 .dashboard-mockup {
@@ -603,7 +490,12 @@ body {
 }
 
 .features-section {
+    max-width: 800px;
+    margin: 0 auto 40px;
     padding: 30px;
+    background: var(--color-bg-card);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .features-title {
@@ -870,12 +762,6 @@ body {
 /* ==========================================
    Responsive Design
    ========================================== */
-@media (max-width: 1024px) {
-    .day-card.featured {
-        grid-column: span 1;
-    }
-}
-
 @media (max-width: 768px) {
     :root {
         --section-padding: 60px 0;
@@ -908,10 +794,6 @@ body {
     .event-badge {
         font-size: 11px;
         padding: 8px 15px;
-    }
-
-    .days-grid {
-        grid-template-columns: 1fr;
     }
 
     .benefits-grid {
@@ -950,10 +832,6 @@ body {
 
     .section-title {
         font-size: 24px;
-    }
-
-    .day-card {
-        padding: 20px;
     }
 
     .cta-button {
