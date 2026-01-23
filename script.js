@@ -1,6 +1,8 @@
 /* ==========================================
    AI Income Workshop - JavaScript
    Animations, Particles, Interactions
+   - Bỏ hiệu ứng nghiêng 3D
+   - Thêm hiệu ứng sáng theo chuột
    ========================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNumberCounter();
     initTypewriter();
     initScrollProgressBar();
-    init3DTilt();
+    initMouseGlowEffect(); // Thay thế init3DTilt
 });
 
 /* ==========================================
@@ -284,28 +286,44 @@ function initScrollProgressBar() {
 }
 
 /* ==========================================
-   3D TILT EFFECT ON IMAGES
+   MOUSE GLOW EFFECT - Hiệu ứng sáng theo chuột
+   Thay thế cho 3D Tilt Effect
    ========================================== */
-function init3DTilt() {
-    const tiltElements = document.querySelectorAll('.timeline-image-wrapper, .benefit-card, .proof-card');
+function initMouseGlowEffect() {
+    // Các phần tử sẽ có hiệu ứng sáng theo chuột
+    const glowElements = document.querySelectorAll('.timeline-image-wrapper, .benefit-card, .proof-card, .day-card, .schedule-card');
     
-    tiltElements.forEach(element => {
+    glowElements.forEach(element => {
+        // Thêm class để CSS có thể style
+        element.classList.add('mouse-glow-card');
+        
         element.addEventListener('mousemove', (e) => {
             const rect = element.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
-            
-            element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            // Set CSS custom properties cho vị trí chuột
+            element.style.setProperty('--mouse-x', `${x}px`);
+            element.style.setProperty('--mouse-y', `${y}px`);
         });
         
         element.addEventListener('mouseleave', () => {
-            element.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+            // Reset về giữa khi chuột rời đi
+            element.style.setProperty('--mouse-x', '50%');
+            element.style.setProperty('--mouse-y', '50%');
+        });
+    });
+    
+    // Hiệu ứng sáng cho CTA buttons
+    const buttons = document.querySelectorAll('.cta-button-wrapper');
+    buttons.forEach(button => {
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            button.style.setProperty('--mouse-x', `${x}px`);
+            button.style.setProperty('--mouse-y', `${y}px`);
         });
     });
 }
@@ -403,16 +421,6 @@ function initButtonEffects() {
             if (this.tagName === 'BUTTON' || this.getAttribute('href') === '#register') {
                 createRipple(e, this);
             }
-        });
-        
-        // Mouse move effect for glow
-        button.addEventListener('mousemove', function(e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            this.style.setProperty('--mouse-x', `${x}px`);
-            this.style.setProperty('--mouse-y', `${y}px`);
         });
     });
 }
@@ -586,11 +594,49 @@ additionalStyles.textContent = `
         }
     }
     
-    /* 3D Tilt transition */
-    .timeline-image-wrapper,
-    .benefit-card,
-    .proof-card {
-        transition: transform 0.3s ease;
+    /* Mouse Glow Effect - CSS cho hiệu ứng sáng theo chuột */
+    .mouse-glow-card {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .mouse-glow-card::after {
+        content: '';
+        position: absolute;
+        top: var(--mouse-y, 50%);
+        left: var(--mouse-x, 50%);
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(168, 85, 247, 0.1) 40%, transparent 70%);
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+        border-radius: inherit;
+    }
+    
+    .mouse-glow-card:hover::after {
+        opacity: 1;
+    }
+    
+    /* Ensure content is above glow */
+    .mouse-glow-card > * {
+        position: relative;
+        z-index: 2;
+    }
+    
+    /* Day card specific glow - smaller */
+    .day-card.mouse-glow-card::after {
+        width: 200px;
+        height: 200px;
+    }
+    
+    /* Schedule card specific glow - larger */
+    .schedule-card.mouse-glow-card::after {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.05) 40%, transparent 70%);
     }
     
     /* Typewriter cursor */
