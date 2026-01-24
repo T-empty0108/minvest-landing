@@ -1,15 +1,11 @@
 /* ==========================================
    AI Income Workshop - JavaScript
    Animations, Particles, Interactions
-   - Bỏ hiệu ứng nghiêng 3D
-   - Thêm hiệu ứng sáng theo chuột
-   ========================================== */
+========================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Add js-ready class to enable animations
     document.body.classList.add('js-ready');
     
-    // Initialize all features
     initScrollAnimations();
     initGlobalParticles();
     initFormHandler();
@@ -17,12 +13,13 @@ document.addEventListener('DOMContentLoaded', function() {
     initNumberCounter();
     initTypewriter();
     initScrollProgressBar();
-    initMouseGlowEffect(); // Thay thế init3DTilt
+    initMouseGlowEffect();
+    initConfetti();
 });
 
 /* ==========================================
    SCROLL ANIMATIONS
-   ========================================== */
+========================================== */
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll('.animate-on-scroll');
     
@@ -53,10 +50,9 @@ function initScrollAnimations() {
 }
 
 /* ==========================================
-   GLOBAL FLOATING PARTICLES (All Sections)
-   ========================================== */
+   GLOBAL FLOATING PARTICLES
+========================================== */
 function initGlobalParticles() {
-    // Create global particles container
     const globalParticles = document.createElement('div');
     globalParticles.id = 'global-particles';
     globalParticles.style.cssText = `
@@ -71,13 +67,11 @@ function initGlobalParticles() {
     `;
     document.body.prepend(globalParticles);
     
-    // Create particles
     const particleCount = 50;
     for (let i = 0; i < particleCount; i++) {
         createGlobalParticle(globalParticles);
     }
     
-    // Also init hero particles if exists
     const heroParticles = document.getElementById('particles');
     if (heroParticles) {
         for (let i = 0; i < 20; i++) {
@@ -88,13 +82,11 @@ function initGlobalParticles() {
 
 function createGlobalParticle(container) {
     const particle = document.createElement('div');
-    
     const size = Math.random() * 3 + 1;
     const left = Math.random() * 100;
     const duration = Math.random() * 20 + 15;
     const delay = Math.random() * 15;
     
-    // Colors: purple, pink, green, cyan
     const colors = [
         'rgba(139, 92, 246, 0.4)',
         'rgba(236, 72, 153, 0.4)',
@@ -153,14 +145,71 @@ function createParticle(container) {
 }
 
 /* ==========================================
+   CONFETTI EFFECT cho Tuần 4 Featured
+========================================== */
+function initConfetti() {
+    const confettiContainer = document.getElementById('confetti');
+    if (!confettiContainer) return;
+    
+    const confettiCount = 25;
+    const colors = ['#8b5cf6', '#ec4899', '#22c55e', '#fbbf24', '#06b6d4', '#ffffff'];
+    
+    for (let i = 0; i < confettiCount; i++) {
+        createConfettiParticle(confettiContainer, colors, i);
+    }
+}
+
+function createConfettiParticle(container, colors, index) {
+    const particle = document.createElement('div');
+    const size = Math.random() * 6 + 3;
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const duration = Math.random() * 4 + 3;
+    const delay = Math.random() * 5;
+    
+    // Distribute around edges
+    let startX, startY;
+    const side = index % 4;
+    
+    if (side === 0) { // top
+        startX = Math.random() * 100;
+        startY = -10;
+    } else if (side === 1) { // right
+        startX = 110;
+        startY = Math.random() * 100;
+    } else if (side === 2) { // bottom
+        startX = Math.random() * 100;
+        startY = 110;
+    } else { // left
+        startX = -10;
+        startY = Math.random() * 100;
+    }
+    
+    const borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    
+    particle.className = 'confetti-particle';
+    particle.style.cssText = `
+        position: absolute;
+        width: ${size}px;
+        height: ${size}px;
+        left: ${startX}%;
+        top: ${startY}%;
+        background: ${color};
+        border-radius: ${borderRadius};
+        opacity: 0;
+        animation: confetti-float ${duration}s ease-in-out ${delay}s infinite;
+        box-shadow: 0 0 ${size}px ${color};
+    `;
+    
+    container.appendChild(particle);
+}
+
+/* ==========================================
    NUMBER COUNTER ANIMATION
-   ========================================== */
+========================================== */
 function initNumberCounter() {
     const counters = document.querySelectorAll('[data-count]');
     
-    const observerOptions = {
-        threshold: 0.5
-    };
+    const observerOptions = { threshold: 0.5 };
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -182,7 +231,7 @@ function initNumberCounter() {
         observer.observe(counter);
     });
     
-    // Auto-detect $8.9M text and make it countable
+    // Auto-detect $8.9M text
     document.querySelectorAll('.highlight-green, .neon-text-green').forEach(el => {
         if (el.textContent.includes('$8.9M') && !el.dataset.count) {
             el.dataset.count = '8.9';
@@ -202,8 +251,6 @@ function animateCounter(element, target, prefix, suffix, decimals, duration) {
     function updateCounter(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        
-        // Easing function (ease-out)
         const easeOut = 1 - Math.pow(1 - progress, 3);
         const currentValue = startValue + (target - startValue) * easeOut;
         
@@ -219,7 +266,7 @@ function animateCounter(element, target, prefix, suffix, decimals, duration) {
 
 /* ==========================================
    TYPEWRITER EFFECT
-   ========================================== */
+========================================== */
 function initTypewriter() {
     const typewriterElements = document.querySelectorAll('[data-typewriter]');
     
@@ -231,20 +278,19 @@ function initTypewriter() {
         element.style.borderRight = '2px solid #8b5cf6';
         
         let i = 0;
+        
         function type() {
             if (i < text.length) {
                 element.textContent += text.charAt(i);
                 i++;
                 setTimeout(type, speed);
             } else {
-                // Remove cursor after typing
                 setTimeout(() => {
                     element.style.borderRight = 'none';
                 }, 1000);
             }
         }
         
-        // Start typing when visible
         const observer = new IntersectionObserver((entries) => {
             if (entries[0].isIntersecting) {
                 setTimeout(type, 500);
@@ -258,9 +304,8 @@ function initTypewriter() {
 
 /* ==========================================
    SCROLL PROGRESS BAR
-   ========================================== */
+========================================== */
 function initScrollProgressBar() {
-    // Create progress bar
     const progressBar = document.createElement('div');
     progressBar.id = 'scroll-progress';
     progressBar.style.cssText = `
@@ -276,7 +321,6 @@ function initScrollProgressBar() {
     `;
     document.body.prepend(progressBar);
     
-    // Update on scroll
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset;
         const docHeight = document.documentElement.scrollHeight - window.innerHeight;
@@ -286,15 +330,12 @@ function initScrollProgressBar() {
 }
 
 /* ==========================================
-   MOUSE GLOW EFFECT - Hiệu ứng sáng theo chuột
-   Thay thế cho 3D Tilt Effect
-   ========================================== */
+   MOUSE GLOW EFFECT
+========================================== */
 function initMouseGlowEffect() {
-    // Các phần tử sẽ có hiệu ứng sáng theo chuột
-    const glowElements = document.querySelectorAll('.timeline-image-wrapper, .benefit-card, .proof-card, .day-card, .schedule-card');
+    const glowElements = document.querySelectorAll('.timeline-image-wrapper, .benefit-card, .proof-card, .week-card, .schedule-card');
     
     glowElements.forEach(element => {
-        // Thêm class để CSS có thể style
         element.classList.add('mouse-glow-card');
         
         element.addEventListener('mousemove', (e) => {
@@ -302,19 +343,16 @@ function initMouseGlowEffect() {
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             
-            // Set CSS custom properties cho vị trí chuột
             element.style.setProperty('--mouse-x', `${x}px`);
             element.style.setProperty('--mouse-y', `${y}px`);
         });
         
         element.addEventListener('mouseleave', () => {
-            // Reset về giữa khi chuột rời đi
             element.style.setProperty('--mouse-x', '50%');
             element.style.setProperty('--mouse-y', '50%');
         });
     });
     
-    // Hiệu ứng sáng cho CTA buttons
     const buttons = document.querySelectorAll('.cta-button-wrapper');
     buttons.forEach(button => {
         button.addEventListener('mousemove', (e) => {
@@ -330,7 +368,7 @@ function initMouseGlowEffect() {
 
 /* ==========================================
    FORM HANDLER
-   ========================================== */
+========================================== */
 function initFormHandler() {
     const form = document.getElementById('registerForm');
     if (!form) return;
@@ -363,7 +401,7 @@ function initFormHandler() {
 
 /* ==========================================
    NOTIFICATION
-   ========================================== */
+========================================== */
 function showNotification(message, type = 'info') {
     const existing = document.querySelector('.notification');
     if (existing) existing.remove();
@@ -407,16 +445,14 @@ function showNotification(message, type = 'info') {
 }
 
 /* ==========================================
-   BUTTON EFFECTS (with Pulse)
-   ========================================== */
+   BUTTON EFFECTS
+========================================== */
 function initButtonEffects() {
     const buttons = document.querySelectorAll('.cta-button-wrapper');
     
     buttons.forEach(button => {
-        // Add pulse class
         button.classList.add('pulse-animation');
         
-        // Ripple effect on click
         button.addEventListener('click', function(e) {
             if (this.tagName === 'BUTTON' || this.getAttribute('href') === '#register') {
                 createRipple(e, this);
@@ -428,7 +464,6 @@ function initButtonEffects() {
 function createRipple(event, element) {
     const ripple = document.createElement('span');
     const rect = element.getBoundingClientRect();
-    
     const size = Math.max(rect.width, rect.height);
     const x = event.clientX - rect.left - size / 2;
     const y = event.clientY - rect.top - size / 2;
@@ -452,8 +487,8 @@ function createRipple(event, element) {
 }
 
 /* ==========================================
-   SMOOTH SCROLL FOR ANCHOR LINKS
-   ========================================== */
+   SMOOTH SCROLL
+========================================== */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
@@ -468,8 +503,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 /* ==========================================
-   PARALLAX EFFECT ON SCROLL
-   ========================================== */
+   PARALLAX EFFECT
+========================================== */
 let ticking = false;
 
 window.addEventListener('scroll', function() {
@@ -484,8 +519,8 @@ window.addEventListener('scroll', function() {
 
 function updateParallax() {
     const scrolled = window.pageYOffset;
-    
     const heroContent = document.querySelector('.hero-content');
+    
     if (heroContent && scrolled < window.innerHeight) {
         heroContent.style.transform = `translateY(${scrolled * 0.1}px)`;
         heroContent.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
@@ -494,7 +529,7 @@ function updateParallax() {
 
 /* ==========================================
    ICON HOVER ANIMATIONS
-   ========================================== */
+========================================== */
 document.querySelectorAll('.icon-animate').forEach(icon => {
     icon.addEventListener('mouseenter', function() {
         this.style.transform = 'scale(1.1) rotate(5deg)';
@@ -507,7 +542,7 @@ document.querySelectorAll('.icon-animate').forEach(icon => {
 
 /* ==========================================
    LAZY LOADING FOR IMAGES
-   ========================================== */
+========================================== */
 if ('IntersectionObserver' in window) {
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -528,8 +563,8 @@ if ('IntersectionObserver' in window) {
 }
 
 /* ==========================================
-   INJECT ADDITIONAL CSS FOR NEW EFFECTS
-   ========================================== */
+   INJECT ADDITIONAL CSS
+========================================== */
 const additionalStyles = document.createElement('style');
 additionalStyles.textContent = `
     /* Ripple Animation */
@@ -583,18 +618,12 @@ additionalStyles.textContent = `
     }
     
     @keyframes gradient-flow {
-        0% {
-            background-position: 0% 50%;
-        }
-        50% {
-            background-position: 100% 50%;
-        }
-        100% {
-            background-position: 0% 50%;
-        }
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
     }
     
-    /* Mouse Glow Effect - CSS cho hiệu ứng sáng theo chuột */
+    /* Mouse Glow Effect */
     .mouse-glow-card {
         position: relative;
         overflow: hidden;
@@ -620,23 +649,63 @@ additionalStyles.textContent = `
         opacity: 1;
     }
     
-    /* Ensure content is above glow */
     .mouse-glow-card > * {
         position: relative;
         z-index: 2;
     }
     
-    /* Day card specific glow - smaller */
-    .day-card.mouse-glow-card::after {
+    .week-card.mouse-glow-card::after {
         width: 200px;
         height: 200px;
     }
     
-    /* Schedule card specific glow - larger */
     .schedule-card.mouse-glow-card::after {
         width: 500px;
         height: 500px;
         background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.05) 40%, transparent 70%);
+    }
+    
+    /* Confetti Animation */
+    @keyframes confetti-float {
+        0% {
+            opacity: 0;
+            transform: translate(0, 0) rotate(0deg) scale(0);
+        }
+        20% {
+            opacity: 0.8;
+            transform: translate(calc(-50px + 100px * var(--random, 0.5)), calc(-30px + 60px * var(--random, 0.5))) rotate(180deg) scale(1);
+        }
+        50% {
+            opacity: 1;
+        }
+        80% {
+            opacity: 0.6;
+            transform: translate(calc(-30px + 60px * var(--random, 0.5)), calc(-20px + 40px * var(--random, 0.5))) rotate(360deg) scale(0.8);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(0, 0) rotate(540deg) scale(0);
+        }
+    }
+    
+    .confetti-particle {
+        --random: 0.5;
+    }
+    
+    .confetti-particle:nth-child(odd) {
+        --random: 0.3;
+    }
+    
+    .confetti-particle:nth-child(even) {
+        --random: 0.7;
+    }
+    
+    .confetti-particle:nth-child(3n) {
+        --random: 0.9;
+    }
+    
+    .confetti-particle:nth-child(4n) {
+        --random: 0.1;
     }
     
     /* Typewriter cursor */
@@ -648,6 +717,6 @@ document.head.appendChild(additionalStyles);
 
 /* ==========================================
    CONSOLE EASTER EGG
-   ========================================== */
+========================================== */
 console.log('%c✦ AI Income Workshop', 'font-size: 24px; font-weight: bold; color: #8b5cf6;');
-console.log('%cJoin 5 Days to Copy My AI System!', 'font-size: 14px; color: #22c55e;');
+console.log('%cKhóa học Trading Forex 5 Tuần - mInvest', 'font-size: 14px; color: #22c55e;');
