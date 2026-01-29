@@ -1,5 +1,5 @@
 /* ==========================================
-   AI Income Workshop - JavaScript
+   mInvest Smart Trading - JavaScript
    Animations, Particles, Interactions
 ========================================== */
 
@@ -231,14 +231,9 @@ function initNumberCounter() {
         observer.observe(counter);
     });
     
-    // Auto-detect $8.9M text
+    // Auto-detect +2000 text for học viên counter
     document.querySelectorAll('.highlight-green, .neon-text-green').forEach(el => {
-        if (el.textContent.includes('$8.9M') && !el.dataset.count) {
-            el.dataset.count = '8.9';
-            el.dataset.prefix = '$';
-            el.dataset.suffix = 'M';
-            el.dataset.decimals = '1';
-            el.textContent = '$0M';
+        if (el.textContent.includes('+0') && el.dataset.count === '2000') {
             observer.observe(el);
         }
     });
@@ -380,14 +375,14 @@ function initFormHandler() {
         const button = form.querySelector('.cta-button-wrapper');
         const originalText = button.querySelector('.cta-button-text').textContent;
         
-        button.querySelector('.cta-button-text').textContent = 'REGISTERING...';
+        button.querySelector('.cta-button-text').textContent = 'ĐANG XỬ LÝ...';
         button.style.pointerEvents = 'none';
         
         setTimeout(() => {
-            button.querySelector('.cta-button-text').textContent = '✓ REGISTERED!';
+            button.querySelector('.cta-button-text').textContent = '✓ ĐĂNG KÝ THÀNH CÔNG!';
             button.style.background = 'linear-gradient(90deg, #22c55e, #16a34a)';
             
-            showNotification('Success! Check your email for confirmation.', 'success');
+            showNotification('Thành công! Kiểm tra email để xác nhận đăng ký.', 'success');
             
             setTimeout(() => {
                 button.querySelector('.cta-button-text').textContent = originalText;
@@ -718,5 +713,5 @@ document.head.appendChild(additionalStyles);
 /* ==========================================
    CONSOLE EASTER EGG
 ========================================== */
-console.log('%c✦ AI Income Workshop', 'font-size: 24px; font-weight: bold; color: #8b5cf6;');
+console.log('%c✦ mInvest Smart Trading', 'font-size: 24px; font-weight: bold; color: #8b5cf6;');
 console.log('%cKhóa học Trading Forex 5 Tuần - mInvest', 'font-size: 14px; color: #22c55e;');
