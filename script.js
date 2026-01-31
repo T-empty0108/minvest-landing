@@ -1,6 +1,7 @@
 /* ==========================================
    mInvest Smart Trading - JavaScript
    Animations, Particles, Interactions
+   COLOR SCHEME: Blue Gradient (#0072ff - #00a2ff - #52ebfd)
 ========================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -50,7 +51,7 @@ function initScrollAnimations() {
 }
 
 /* ==========================================
-   GLOBAL FLOATING PARTICLES
+   GLOBAL FLOATING PARTICLES - BLUE
 ========================================== */
 function initGlobalParticles() {
     const globalParticles = document.createElement('div');
@@ -87,11 +88,12 @@ function createGlobalParticle(container) {
     const duration = Math.random() * 20 + 15;
     const delay = Math.random() * 15;
     
+    // BLUE COLOR PALETTE
     const colors = [
-        'rgba(139, 92, 246, 0.4)',
-        'rgba(236, 72, 153, 0.4)',
+        'rgba(0, 114, 255, 0.4)',
+        'rgba(0, 162, 255, 0.4)',
+        'rgba(82, 235, 253, 0.3)',
         'rgba(34, 197, 94, 0.3)',
-        'rgba(6, 182, 212, 0.3)',
         'rgba(255, 255, 255, 0.2)'
     ];
     const color = colors[Math.floor(Math.random() * colors.length)];
@@ -122,10 +124,11 @@ function createParticle(container) {
     const delay = Math.random() * 10;
     const opacity = Math.random() * 0.5 + 0.3;
     
+    // BLUE COLOR PALETTE
     const colors = [
-        'rgba(139, 92, 246, 0.6)',
-        'rgba(236, 72, 153, 0.6)',
-        'rgba(168, 85, 247, 0.6)',
+        'rgba(0, 114, 255, 0.6)',
+        'rgba(0, 162, 255, 0.6)',
+        'rgba(82, 235, 253, 0.6)',
         'rgba(34, 197, 94, 0.4)'
     ];
     const color = colors[Math.floor(Math.random() * colors.length)];
@@ -145,14 +148,15 @@ function createParticle(container) {
 }
 
 /* ==========================================
-   CONFETTI EFFECT cho Tuần 4 Featured
+   CONFETTI EFFECT cho Tuần 4 Featured - BLUE
 ========================================== */
 function initConfetti() {
     const confettiContainer = document.getElementById('confetti');
     if (!confettiContainer) return;
     
     const confettiCount = 25;
-    const colors = ['#8b5cf6', '#ec4899', '#22c55e', '#fbbf24', '#06b6d4', '#ffffff'];
+    // BLUE COLOR PALETTE
+    const colors = ['#0072ff', '#00a2ff', '#52ebfd', '#22c55e', '#ffffff'];
     
     for (let i = 0; i < confettiCount; i++) {
         createConfettiParticle(confettiContainer, colors, i);
@@ -270,7 +274,7 @@ function initTypewriter() {
         const speed = parseInt(element.dataset.speed) || 50;
         
         element.textContent = '';
-        element.style.borderRight = '2px solid #8b5cf6';
+        element.style.borderRight = '2px solid #0072ff';
         
         let i = 0;
         
@@ -298,7 +302,7 @@ function initTypewriter() {
 }
 
 /* ==========================================
-   SCROLL PROGRESS BAR
+   SCROLL PROGRESS BAR - BLUE
 ========================================== */
 function initScrollProgressBar() {
     const progressBar = document.createElement('div');
@@ -308,11 +312,11 @@ function initScrollProgressBar() {
         top: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(90deg, #8b5cf6, #ec4899, #22c55e);
+        background: linear-gradient(90deg, #0072ff, #00a2ff, #52ebfd);
         width: 0%;
         z-index: 9999;
         transition: width 0.1s ease;
-        box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+        box-shadow: 0 0 10px rgba(0, 114, 255, 0.5);
     `;
     document.body.prepend(progressBar);
     
@@ -422,7 +426,7 @@ function showNotification(message, type = 'info') {
         z-index: 9999;
         transform: translateX(120%);
         transition: transform 0.3s ease;
-        background: ${type === 'success' ? 'linear-gradient(135deg, #22c55e, #16a34a)' : '#8b5cf6'};
+        background: ${type === 'success' ? 'linear-gradient(135deg, #22c55e, #16a34a)' : '#0072ff'};
         color: white;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     `;
@@ -558,7 +562,7 @@ if ('IntersectionObserver' in window) {
 }
 
 /* ==========================================
-   INJECT ADDITIONAL CSS
+   INJECT ADDITIONAL CSS - BLUE THEME
 ========================================== */
 const additionalStyles = document.createElement('style');
 additionalStyles.textContent = `
@@ -602,9 +606,9 @@ additionalStyles.textContent = `
         }
     }
     
-    /* Text Gradient Animation */
+    /* Text Gradient Animation - BLUE */
     .gradient-text-animated {
-        background: linear-gradient(90deg, #8b5cf6, #ec4899, #3b82f6, #8b5cf6);
+        background: linear-gradient(90deg, #0072ff, #00a2ff, #52ebfd, #0072ff);
         background-size: 300% 100%;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -618,7 +622,7 @@ additionalStyles.textContent = `
         100% { background-position: 0% 50%; }
     }
     
-    /* Mouse Glow Effect */
+    /* Mouse Glow Effect - BLUE */
     .mouse-glow-card {
         position: relative;
         overflow: hidden;
@@ -631,7 +635,7 @@ additionalStyles.textContent = `
         left: var(--mouse-x, 50%);
         width: 300px;
         height: 300px;
-        background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, rgba(168, 85, 247, 0.1) 40%, transparent 70%);
+        background: radial-gradient(circle, rgba(0, 114, 255, 0.25) 0%, rgba(0, 162, 255, 0.1) 40%, transparent 70%);
         transform: translate(-50%, -50%);
         pointer-events: none;
         opacity: 0;
@@ -657,7 +661,7 @@ additionalStyles.textContent = `
     .schedule-card.mouse-glow-card::after {
         width: 500px;
         height: 500px;
-        background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(168, 85, 247, 0.05) 40%, transparent 70%);
+        background: radial-gradient(circle, rgba(0, 114, 255, 0.15) 0%, rgba(0, 162, 255, 0.05) 40%, transparent 70%);
     }
     
     /* Confetti Animation */
@@ -703,7 +707,7 @@ additionalStyles.textContent = `
         --random: 0.1;
     }
     
-    /* Typewriter cursor */
+    /* Typewriter cursor - BLUE */
     [data-typewriter] {
         display: inline-block;
     }
@@ -713,5 +717,5 @@ document.head.appendChild(additionalStyles);
 /* ==========================================
    CONSOLE EASTER EGG
 ========================================== */
-console.log('%c✦ mInvest Smart Trading', 'font-size: 24px; font-weight: bold; color: #8b5cf6;');
+console.log('%c✦ mInvest Smart Trading', 'font-size: 24px; font-weight: bold; color: #0072ff;');
 console.log('%cKhóa học Trading Forex 5 Tuần - mInvest', 'font-size: 14px; color: #22c55e;');
