@@ -217,7 +217,7 @@ body {
 }
 
 /* ==========================================
-   CTA BUTTON
+   CTA BUTTON - BLUE THEME
 ========================================== */
 .cta-button-wrapper {
     position: relative;
@@ -226,7 +226,7 @@ body {
     justify-content: center;
     padding: 3px;
     border-radius: 50px;
-    background: linear-gradient(90deg, #22c55e, #4ade80, #22c55e);
+    background: linear-gradient(90deg, #0072ff, #00a2ff, #0072ff);
     background-size: 200% 100%;
     animation: gradient-shift 3s ease infinite;
     cursor: pointer;
@@ -243,7 +243,7 @@ body {
     left: -2px;
     right: -2px;
     bottom: -2px;
-    background: linear-gradient(90deg, #22c55e, #4ade80, #86efac, #4ade80, #22c55e);
+    background: linear-gradient(90deg, #0072ff, #00a2ff, #52ebfd, #00a2ff, #0072ff);
     background-size: 400% 100%;
     border-radius: 52px;
     z-index: -1;
@@ -263,7 +263,7 @@ body {
     left: 3px;
     right: 3px;
     bottom: 3px;
-    background: linear-gradient(180deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+    background: linear-gradient(180deg, #00a2ff 0%, #0072ff 50%, #0062dd 100%);
     border-radius: 47px;
     z-index: 0;
 }
@@ -274,7 +274,7 @@ body {
     padding: 18px 50px;
     font-size: 16px;
     font-weight: 800;
-    color: #000000;
+    color: #ffffff;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -303,7 +303,7 @@ body {
 
 .cta-button-wrapper:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 40px rgba(34, 197, 94, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 114, 255, 0.5);
 }
 
 .cta-button-wrapper.large .cta-button-text {
@@ -473,7 +473,7 @@ body {
 
 .hero-content {
     text-align: center;
-    padding-top: 45vh;
+    padding-top: 55vh;
     padding-bottom: 80px;
     position: relative;
     z-index: 10;
@@ -656,32 +656,36 @@ body {
 
 .weeks-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-bottom: 20px;
     text-align: left;
 }
 
 .week-card {
-    background: #ffffff;
+    background: linear-gradient(180deg, #0a1a2e 0%, #061525 50%, #040d18 100%);
     border-radius: 24px;
     padding: 0;
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
     min-height: 320px;
+    border: 1px solid rgba(0, 162, 255, 0.2);
 }
 
 .week-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 15px 45px rgba(0, 114, 255, 0.3);
+    border-color: rgba(0, 162, 255, 0.4);
 }
 
 .week-header {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
-    background: linear-gradient(90deg, #0a1e32 0%, #0d2844 100%);
+    background: linear-gradient(90deg, rgba(0, 114, 255, 0.3) 0%, rgba(0, 162, 255, 0.2) 100%);
+    border: 1px solid rgba(82, 235, 253, 0.3);
     border-radius: 14px;
     padding: 14px 20px;
     margin: 20px 20px 15px 20px;
@@ -694,8 +698,8 @@ body {
 .week-number {
     font-size: 20px;
     font-weight: 800;
-    color: #ffffff;
-    flex-grow: 1;
+    color: #52ebfd;
+    flex-grow: 0;
 }
 
 .week-bolt {
@@ -706,13 +710,19 @@ body {
 .week-title {
     font-size: 22px;
     font-weight: 700;
-    color: #0072ff;
+    color: #00a2ff;
     margin: 0 20px 15px 20px;
     line-height: 1.3;
+    text-align: center;
 }
 
 .week-sessions {
     padding: 0 20px 20px 20px;
+    background: rgba(0, 20, 40, 0.5);
+    border: 1px solid rgba(0, 162, 255, 0.15);
+    border-radius: 16px;
+    margin: 0 15px 15px 15px;
+    padding: 15px;
 }
 
 .session-item {
@@ -721,7 +731,7 @@ body {
     gap: 10px;
     margin-bottom: 12px;
     font-size: 14px;
-    color: #444;
+    color: rgba(255, 255, 255, 0.8);
     line-height: 1.5;
 }
 
@@ -730,7 +740,7 @@ body {
 }
 
 .session-marker {
-    color: #0072ff;
+    color: #52ebfd;
     font-weight: 700;
     flex-shrink: 0;
     min-width: 20px;
@@ -741,52 +751,41 @@ body {
 }
 
 .session-text strong {
-    color: #1a1a2e;
+    color: #ffffff;
     font-weight: 600;
 }
 
 /* Week 4 Featured - BLUE */
-.week-card-featured {
-    background: linear-gradient(180deg, #0072ff 0%, #0062dd 50%, #0052bb 100%);
-    border-radius: 28px;
-    padding: 35px 45px 45px;
-    text-align: center;
+.week-card.week-card-featured {
+    background: linear-gradient(180deg, #0a1a2e 0%, #061525 50%, #040d18 100%);
+    border-radius: 24px;
+    padding: 0;
+    text-align: left;
     position: relative;
-    overflow: visible;
-    margin-top: 15px;
+    overflow: hidden;
     z-index: 2;
-    max-width: calc(50% * 1.2);
-    margin-left: auto;
-    margin-right: auto;
-    border: 3px solid transparent;
-    background-clip: padding-box;
+    border: 2px solid rgba(82, 235, 253, 0.4);
+    box-shadow: 0 0 30px rgba(0, 162, 255, 0.3);
 }
 
-.week-card-featured::before {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    right: -3px;
-    bottom: -3px;
-    border-radius: 31px;
-    background: linear-gradient(90deg, 
-        #0072ff, #00a2ff, #52ebfd, #22c55e, #52ebfd, #00a2ff, #0072ff);
-    background-size: 400% 100%;
-    animation: border-gradient-flow 4s linear infinite;
-    z-index: -1;
+.week-card.week-card-featured:hover {
+    box-shadow: 0 0 50px rgba(0, 162, 255, 0.5);
+    border-color: rgba(82, 235, 253, 0.6);
 }
 
-.week-card-featured::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 25px;
-    background: linear-gradient(180deg, #0072ff 0%, #0062dd 50%, #0052bb 100%);
-    z-index: -1;
+.week-card.week-card-featured .week-header {
+    background: linear-gradient(90deg, rgba(0, 114, 255, 0.4) 0%, rgba(0, 162, 255, 0.3) 100%);
+    border: 1px solid rgba(82, 235, 253, 0.5);
+}
+
+.week-card.week-card-featured .week-title {
+    color: #00a2ff;
+}
+
+.week-card.week-card-featured .live-text {
+    color: #52ebfd;
+    text-shadow: 0 0 20px rgba(82, 235, 253, 0.8);
+    animation: live-pulse 1.5s ease-in-out infinite;
 }
 
 @keyframes border-gradient-flow {
@@ -845,23 +844,6 @@ body {
     50% { opacity: 1; transform: translateY(-50%) rotate(-12deg) scale(1.1); }
 }
 
-.week-card-featured .week-header {
-    background: rgba(0, 0, 0, 0.3);
-    justify-content: center;
-    margin: 0 auto 18px auto;
-    width: fit-content;
-    padding: 14px 30px;
-    border-radius: 14px;
-}
-
-.week-title-featured {
-    font-size: 32px;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
 .live-text {
     color: #52ebfd;
     text-shadow: 0 0 30px rgba(82, 235, 253, 0.8);
@@ -871,32 +853,6 @@ body {
 @keyframes live-pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.7; }
-}
-
-.week-sessions-featured {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 18px;
-    padding: 20px 25px;
-    backdrop-filter: blur(5px);
-    text-align: left;
-}
-
-.week-sessions-featured .session-item {
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 15px;
-}
-
-.week-sessions-featured .session-item:last-child {
-    margin-bottom: 0;
-}
-
-.week-sessions-featured .session-marker {
-    color: #52ebfd;
-}
-
-.week-sessions-featured .session-text strong {
-    color: #ffffff;
 }
 
 /* Stage Lights - BLUE */
@@ -1491,12 +1447,12 @@ body {
     }
 
     .weeks-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
     }
 
     .week-card-featured {
-        max-width: 100%;
+        grid-column: span 2;
     }
 }
 
