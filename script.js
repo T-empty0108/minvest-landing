@@ -592,17 +592,17 @@ additionalStyles.textContent = `
         }
     }
     
-    /* Button Pulse Animation */
+    /* Button Pulse Animation - BLUE */
     .pulse-animation {
         animation: button-pulse 2s ease-in-out infinite;
     }
     
     @keyframes button-pulse {
         0%, 100% {
-            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+            box-shadow: 0 0 0 0 rgba(0, 114, 255, 0.4);
         }
         50% {
-            box-shadow: 0 0 0 15px rgba(34, 197, 94, 0);
+            box-shadow: 0 0 0 15px rgba(0, 114, 255, 0);
         }
     }
     
