@@ -530,11 +530,13 @@ console.log('%c✦ mInvest Smart Trading', 'font-size: 24px; font-weight: bold; 
 console.log('%cKhóa học Trading Forex 5 Tuần - mInvest', 'font-size: 14px; color: #00a2ff;');
 
 /* ==========================================
-   LIGHTBOX FUNCTIONALITY
+   LIGHTBOX FUNCTIONALITY - 2 cột với Card nổi
 ========================================== */
 function initLightbox() {
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDescription = document.getElementById('lightbox-description');
     const lightboxClose = document.getElementById('lightbox-close');
     const imageWrappers = document.querySelectorAll('[data-lightbox]');
     
@@ -544,9 +546,26 @@ function initLightbox() {
     imageWrappers.forEach(wrapper => {
         wrapper.addEventListener('click', function() {
             const img = this.querySelector('img');
-            if (img) {
+            
+            // Tìm timeline-item-zigzag cha
+            const timelineItem = this.closest('.timeline-item-zigzag');
+            
+            if (img && timelineItem) {
+                // Lấy ảnh
                 lightboxImage.src = img.src;
                 lightboxImage.alt = img.alt;
+                
+                // Lấy title và description
+                const titleEl = timelineItem.querySelector('.timeline-title-zigzag');
+                const descEl = timelineItem.querySelector('.timeline-text-zigzag');
+                
+                if (titleEl) {
+                    lightboxTitle.textContent = titleEl.textContent;
+                }
+                if (descEl) {
+                    lightboxDescription.textContent = descEl.textContent;
+                }
+                
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
@@ -561,7 +580,7 @@ function initLightbox() {
         });
     }
     
-    // Close lightbox when clicking overlay
+    // Close lightbox when clicking overlay (not content)
     lightbox.addEventListener('click', function(e) {
         if (e.target === lightbox) {
             closeLightbox();
