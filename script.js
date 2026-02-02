@@ -533,6 +533,7 @@ console.log('%cKhóa học Trading Forex 5 Tuần - mInvest', 'font-size: 14px; 
    LIGHTBOX FUNCTIONALITY - 2 cột với Card nổi
 ========================================== */
 function initLightbox() {
+    // Lightbox chính cho Timeline (với text)
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxTitle = document.getElementById('lightbox-title');
@@ -540,62 +541,105 @@ function initLightbox() {
     const lightboxClose = document.getElementById('lightbox-close');
     const imageWrappers = document.querySelectorAll('[data-lightbox]');
     
-    if (!lightbox || !lightboxImage) return;
-    
-    // Open lightbox when clicking on image
-    imageWrappers.forEach(wrapper => {
-        wrapper.addEventListener('click', function() {
-            const img = this.querySelector('img');
-            
-            // Tìm timeline-item-zigzag cha
-            const timelineItem = this.closest('.timeline-item-zigzag');
-            
-            if (img && timelineItem) {
-                // Lấy ảnh
-                lightboxImage.src = img.src;
-                lightboxImage.alt = img.alt;
+    if (lightbox && lightboxImage) {
+        // Open lightbox when clicking on timeline image
+        imageWrappers.forEach(wrapper => {
+            wrapper.addEventListener('click', function() {
+                const img = this.querySelector('img');
                 
-                // Lấy title và description
-                const titleEl = timelineItem.querySelector('.timeline-title-zigzag');
-                const descEl = timelineItem.querySelector('.timeline-text-zigzag');
+                // Tìm timeline-item-zigzag cha
+                const timelineItem = this.closest('.timeline-item-zigzag');
                 
-                if (titleEl) {
-                    lightboxTitle.textContent = titleEl.textContent;
+                if (img && timelineItem) {
+                    // Lấy ảnh
+                    lightboxImage.src = img.src;
+                    lightboxImage.alt = img.alt;
+                    
+                    // Lấy title và description
+                    const titleEl = timelineItem.querySelector('.timeline-title-zigzag');
+                    const descEl = timelineItem.querySelector('.timeline-text-zigzag');
+                    
+                    if (titleEl) {
+                        lightboxTitle.textContent = titleEl.textContent;
+                    }
+                    if (descEl) {
+                        lightboxDescription.textContent = descEl.textContent;
+                    }
+                    
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
                 }
-                if (descEl) {
-                    lightboxDescription.textContent = descEl.textContent;
-                }
-                
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
+            });
         });
-    });
-    
-    // Close lightbox when clicking close button
-    if (lightboxClose) {
-        lightboxClose.addEventListener('click', function(e) {
-            e.stopPropagation();
-            closeLightbox();
+        
+        // Close lightbox when clicking close button
+        if (lightboxClose) {
+            lightboxClose.addEventListener('click', function(e) {
+                e.stopPropagation();
+                closeLightbox();
+            });
+        }
+        
+        // Close lightbox when clicking overlay (not content)
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
         });
     }
     
-    // Close lightbox when clicking overlay (not content)
-    lightbox.addEventListener('click', function(e) {
-        if (e.target === lightbox) {
-            closeLightbox();
+    // Lightbox Simple cho Benefits (chỉ ảnh)
+    const lightboxSimple = document.getElementById('lightbox-simple');
+    const lightboxSimpleImage = document.getElementById('lightbox-simple-image');
+    const lightboxSimpleClose = document.getElementById('lightbox-simple-close');
+    const benefitImages = document.querySelectorAll('[data-lightbox-simple]');
+    
+    if (lightboxSimple && lightboxSimpleImage) {
+        benefitImages.forEach(wrapper => {
+            wrapper.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                if (img) {
+                    lightboxSimpleImage.src = img.src;
+                    lightboxSimpleImage.alt = img.alt;
+                    lightboxSimple.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        if (lightboxSimpleClose) {
+            lightboxSimpleClose.addEventListener('click', function(e) {
+                e.stopPropagation();
+                closeLightboxSimple();
+            });
         }
-    });
+        
+        lightboxSimple.addEventListener('click', function(e) {
+            if (e.target === lightboxSimple) {
+                closeLightboxSimple();
+            }
+        });
+    }
     
     // Close lightbox with Escape key
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox();
+        if (e.key === 'Escape') {
+            if (lightbox && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+            if (lightboxSimple && lightboxSimple.classList.contains('active')) {
+                closeLightboxSimple();
+            }
         }
     });
     
     function closeLightbox() {
         lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    function closeLightboxSimple() {
+        lightboxSimple.classList.remove('active');
         document.body.style.overflow = '';
     }
 }
