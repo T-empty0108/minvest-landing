@@ -961,6 +961,7 @@ body {
 .benefit-image {
     height: 200px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .benefit-image img {
@@ -972,6 +973,70 @@ body {
 
 .benefit-card:hover .benefit-image img {
     transform: scale(1.1);
+}
+
+/* Lightbox Simple cho Benefits (chỉ ảnh, không text) */
+.lightbox-simple-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 40px;
+}
+
+.lightbox-simple-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-simple-content {
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.lightbox-simple-overlay.active .lightbox-simple-content {
+    transform: scale(1);
+}
+
+.lightbox-simple-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.lightbox-simple-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.lightbox-simple-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
 }
 
 /* YÊU CẦU 8: Tăng cỡ chữ title và description */
@@ -1298,7 +1363,10 @@ body {
 
 .lightbox-image {
     max-width: 100%;
-    max-height: 80vh;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    min-width: 450px;
     object-fit: contain;
     border-radius: 12px;
 }
@@ -1528,11 +1596,12 @@ body {
     color: #ffffff;
     margin-bottom: 20px;
     letter-spacing: 1px;
-    text-align: center;
+    text-align: left;
+    padding-left: 34px;
 }
 
 .contact-items {
-    padding-left: 25px;
+    padding-left: 0;
 }
 
 .contact-item {
@@ -1608,8 +1677,10 @@ body {
 }
 
 /* ==========================================
-   RESPONSIVE
+   RESPONSIVE - TỐI ƯU CHO MOBILE
 ========================================== */
+
+/* Tablet */
 @media (max-width: 900px) {
     .timeline-zigzag {
         max-width: 600px;
@@ -1643,17 +1714,21 @@ body {
     }
 
     .timeline-image-wrapper {
-        max-width: 100%;
+        max-width: 350px;
     }
 
     .schedule-card {
         max-width: 95%;
-        padding: 50px 25px 70px;
+        padding: 50px 25px 50px;
     }
 
     .weeks-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
+    }
+    
+    .weeks-grid-bottom {
+        max-width: 100%;
     }
 
     .week-card {
@@ -1673,6 +1748,11 @@ body {
     .footer-contact {
         text-align: center;
     }
+    
+    .footer-contact-title {
+        text-align: center;
+        padding-left: 0;
+    }
 
     .contact-item {
         justify-content: center;
@@ -1689,19 +1769,51 @@ body {
     .social-icons {
         justify-content: center;
     }
+    
+    /* Lightbox responsive */
+    .lightbox-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 20px;
+    }
+    
+    .lightbox-image {
+        max-height: 50vh;
+        min-width: auto;
+    }
+    
+    .lightbox-text-card {
+        padding: 25px;
+    }
+    
+    .lightbox-title {
+        font-size: 20px;
+    }
+    
+    .lightbox-description {
+        font-size: 16px;
+    }
 }
 
+/* Mobile Large */
 @media (max-width: 768px) {
     :root {
         --section-padding: 60px 0;
     }
+    
+    .container {
+        padding: 0 15px;
+    }
 
+    /* Hero Section Mobile */
     .hero-content {
-        padding-top: 40vh;
+        padding-top: 35vh;
+        padding-bottom: 60px;
     }
 
     .hero-headline {
-        font-size: 28px;
+        font-size: 26px;
+        line-height: 1.4;
     }
 
     .headline-line1,
@@ -1711,48 +1823,214 @@ body {
 
     .hero-subheadline {
         font-size: 14px;
-        padding: 0 20px;
+        padding: 0 10px;
+    }
+    
+    .brand-section {
+        margin-bottom: 20px;
+    }
+    
+    .logo-icon {
+        font-size: 22px;
+    }
+    
+    .logo-text {
+        font-size: 10px;
     }
 
+    /* CTA Button Mobile */
     .cta-button-wrapper .cta-button-text {
-        padding: 15px 35px;
+        padding: 14px 30px;
         font-size: 14px;
     }
 
     .cta-button-wrapper.large .cta-button-text {
-        padding: 18px 45px;
-        font-size: 16px;
+        padding: 16px 40px;
+        font-size: 15px;
     }
 
+    /* Trust badges Mobile */
     .trust-badges {
         flex-direction: column;
         align-items: center;
-        gap: 15px;
+        gap: 12px;
+    }
+    
+    .trust-badge {
+        padding: 10px 16px;
+        font-size: 12px;
     }
 
     .event-badge {
-        font-size: 11px;
-        padding: 8px 15px;
+        font-size: 10px;
+        padding: 8px 14px;
+    }
+    
+    /* Video Section Mobile */
+    .video-section {
+        padding: 40px 0 60px;
+    }
+    
+    .video-title {
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+    
+    .video-wrapper {
+        border-radius: 12px;
+    }
+
+    /* Schedule Section Mobile */
+    .schedule-section {
+        padding: 40px 0 60px;
+    }
+    
+    .schedule-card {
+        padding: 35px 18px 40px;
+        border-radius: 25px;
+    }
+    
+    .schedule-badge {
+        padding: 12px 20px;
+        font-size: 13px;
+        margin-bottom: 25px;
+    }
+    
+    .schedule-title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .schedule-subtitle {
+        font-size: 14px;
+        margin-bottom: 30px;
     }
 
     .weeks-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .weeks-grid-bottom {
+        grid-template-columns: 1fr;
+        gap: 15px;
     }
 
     .week-card {
         min-height: auto;
     }
+    
+    .week-header-wrapper {
+        padding: 15px 15px 0 15px;
+    }
+    
+    .week-header {
+        padding: 10px 15px;
+    }
+    
+    .week-number {
+        font-size: 16px;
+    }
+
+    .week-title {
+        font-size: 18px;
+        margin: 12px 15px;
+    }
+    
+    .week-sessions {
+        margin: 0 12px 12px 12px;
+        padding: 12px;
+    }
+    
+    .session-item {
+        font-size: 13px;
+    }
+    
+    /* Story Section Mobile */
+    .story-section {
+        padding: 50px 0;
+    }
+    
+    .story-headline {
+        font-size: 22px;
+    }
+
+    /* Benefits Section Mobile */
+    .benefits-section {
+        padding: 50px 0;
+    }
+    
+    .benefits-intro {
+        margin-bottom: 40px;
+    }
+    
+    .benefits-lead {
+        font-size: 15px;
+    }
 
     .benefits-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .benefit-image {
+        height: 180px;
+    }
+    
+    .benefit-title {
+        font-size: 20px;
+        padding: 18px 18px 10px;
+    }
+    
+    .benefit-description {
+        font-size: 14px;
+        padding: 0 18px 18px;
+        line-height: 1.7;
+    }
+    
+    .benefits-cta-text {
+        font-size: 15px;
+        margin-bottom: 25px;
     }
 
+    /* Proof Section Mobile */
+    .proof-section {
+        padding: 50px 0;
+    }
+    
     .proof-card {
-        padding: 30px 20px;
+        padding: 25px 18px;
+    }
+    
+    .proof-title {
+        font-size: 22px;
+    }
+    
+    .proof-subtitle {
+        font-size: 14px;
+    }
+    
+    .dashboard-container {
+        padding: 15px;
+        margin-bottom: 25px;
     }
 
     .features-box {
-        padding: 25px 20px;
+        padding: 20px 15px;
+        margin-bottom: 25px;
+    }
+    
+    .features-title {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .features-list {
+        gap: 15px;
+    }
+    
+    .features-list li {
+        gap: 12px;
     }
 
     .feature-icon {
@@ -1760,83 +2038,217 @@ body {
         height: 38px;
         min-width: 38px;
         font-size: 16px;
+        padding: 6px;
+    }
+    
+    .features-list li p {
+        font-size: 14px;
+        padding-top: 8px;
     }
 
+    /* Timeline Section Mobile */
+    .timeline-section {
+        padding: 50px 0;
+    }
+    
     .timeline-main-title {
+        font-size: 26px;
+        margin-bottom: 40px;
+    }
+    
+    .timeline-item-zigzag {
         margin-bottom: 50px;
     }
-
-    .video-wrapper {
-        border-radius: 12px;
+    
+    .timeline-image-wrapper {
+        max-width: 280px;
     }
-}
-
-@media (max-width: 600px) {
-    .schedule-card {
-        padding: 40px 18px 60px;
-        border-radius: 30px;
-        max-width: 100%;
-        margin: 0 15px;
-    }
-
-    .weeks-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-
-    .week-title {
+    
+    .timeline-title-zigzag {
         font-size: 20px;
     }
-
-    .schedule-title {
-        font-size: 28px;
+    
+    .timeline-text-zigzag {
+        font-size: 15px;
+    }
+    
+    .timeline-marker-zigzag {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .marker-icon {
+        font-size: 16px;
     }
 
-    .week-header-wrapper {
-        padding: 15px 15px 0 15px;
+    /* CTA Section Mobile */
+    .cta-section {
+        padding: 50px 0;
+    }
+    
+    .cta-title {
+        font-size: 24px;
+    }
+    
+    .cta-subtitle {
+        font-size: 14px;
+        margin-bottom: 30px;
     }
 
-    .week-header {
-        padding: 12px 15px;
+    /* Footer Mobile */
+    .footer {
+        padding: 40px 0;
     }
-
-    .week-title {
-        margin: 12px 15px;
+    
+    .footer-logo-img {
+        max-width: 130px;
     }
-
-    .week-sessions {
-        margin: 0 12px 12px 12px;
-        padding: 12px;
+    
+    .footer-contact-title,
+    .footer-social-title {
+        font-size: 13px;
+        margin-bottom: 15px;
     }
-
-    .stage-lights {
-        height: 120px;
+    
+    .contact-item {
+        font-size: 14px;
+        margin-bottom: 12px;
     }
-
-    .light {
-        width: 80px;
-        height: 200px;
+    
+    .contact-item i {
+        font-size: 16px;
+        width: 20px;
+    }
+    
+    .social-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 20px;
+    }
+    
+    .social-icons {
+        gap: 15px;
+    }
+    
+    /* Lightbox Mobile */
+    .lightbox-overlay {
+        padding: 20px;
+    }
+    
+    .lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 38px;
+        height: 38px;
+        font-size: 24px;
+    }
+    
+    .lightbox-content {
+        gap: 20px;
+    }
+    
+    .lightbox-image {
+        max-height: 45vh;
+    }
+    
+    .lightbox-text-card {
+        padding: 20px;
+    }
+    
+    .lightbox-quote-icon {
+        font-size: 36px;
+        margin-bottom: 10px;
+    }
+    
+    .lightbox-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .lightbox-description {
+        font-size: 14px;
+        line-height: 1.7;
     }
 }
 
+/* Mobile Small */
 @media (max-width: 480px) {
     .container {
-        padding: 0 15px;
+        padding: 0 12px;
+    }
+    
+    .hero-content {
+        padding-top: 30vh;
+    }
+    
+    .hero-headline {
+        font-size: 22px;
     }
 
     .cta-button-wrapper .cta-button-text {
-        padding: 14px 25px;
+        padding: 12px 24px;
         font-size: 13px;
+        letter-spacing: 0.5px;
     }
-
-    .benefit-title {
+    
+    .cta-button-wrapper.large .cta-button-text {
+        padding: 14px 32px;
+        font-size: 14px;
+    }
+    
+    .schedule-card {
+        padding: 30px 15px 35px;
+        margin: 0 10px;
+    }
+    
+    .schedule-title {
         font-size: 20px;
-        padding: 20px 20px 10px;
+    }
+    
+    .week-title {
+        font-size: 16px;
+    }
+    
+    .session-item {
+        font-size: 12px;
+    }
+    
+    .benefit-title {
+        font-size: 18px;
     }
 
     .benefit-description {
+        font-size: 13px;
+    }
+    
+    .timeline-image-wrapper {
+        max-width: 250px;
+    }
+    
+    .timeline-title-zigzag {
+        font-size: 18px;
+    }
+    
+    .timeline-text-zigzag {
         font-size: 14px;
-        padding: 0 20px 20px;
+    }
+    
+    .proof-title {
+        font-size: 20px;
+    }
+    
+    .cta-title {
+        font-size: 20px;
+    }
+    
+    .footer-logo-img {
+        max-width: 110px;
+    }
+    
+    .social-icon {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
     }
 }
 
