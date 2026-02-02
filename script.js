@@ -1,10 +1,10 @@
 /* ==========================================
-   mInvest Smart Trading - JavaScript v4
-   NEW: Typing Effect, Parallax, Magnetic Buttons, Cursor Glow
+   mInvest Smart Trading - JavaScript v5
+   Cursor Glow inside schedule-card
 ========================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded - initializing v4...');
+    console.log('DOM loaded - initializing v5...');
     document.body.classList.add('js-ready');
     
     initScrollAnimations();
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initMagneticButtons();
     initCursorGlow();
     
-    console.log('All v4 functions initialized');
+    console.log('All v5 functions initialized');
 });
 
 /* ==========================================
@@ -182,7 +182,6 @@ function initTypingEffect() {
     
     function typeText() {
         if (currentIndex < fullText.length) {
-            // Xử lý highlight cho "10 năm" và "đào tạo thực chiến"
             let displayText = fullText.substring(0, currentIndex + 1);
             
             // Highlight "10 năm"
@@ -215,7 +214,6 @@ function initParallax() {
                 if (heroSection) {
                     const heroHeight = heroSection.offsetHeight;
                     
-                    // Chỉ áp dụng parallax khi trong vùng hero
                     if (scrolled <= heroHeight) {
                         const parallaxSpeed = 0.5;
                         heroImage.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
@@ -242,7 +240,6 @@ function initMagneticButtons() {
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
             
-            // Giới hạn di chuyển tối đa 10px
             const maxMove = 10;
             const moveX = (x / rect.width) * maxMove * 2;
             const moveY = (y / rect.height) * maxMove * 2;
@@ -257,19 +254,19 @@ function initMagneticButtons() {
 }
 
 /* ==========================================
-   CURSOR GLOW EFFECT (Schedule Section)
+   CURSOR GLOW EFFECT (Inside Schedule Card)
 ========================================== */
 function initCursorGlow() {
-    const scheduleSection = document.getElementById('schedule');
+    const scheduleCard = document.getElementById('schedule-card');
     const cursorGlow = document.getElementById('cursor-glow');
     
-    if (!scheduleSection || !cursorGlow) return;
+    if (!scheduleCard || !cursorGlow) return;
     
     let mouseX = 0, mouseY = 0;
     let currentX = 0, currentY = 0;
     
-    scheduleSection.addEventListener('mousemove', (e) => {
-        const rect = scheduleSection.getBoundingClientRect();
+    scheduleCard.addEventListener('mousemove', (e) => {
+        const rect = scheduleCard.getBoundingClientRect();
         mouseX = e.clientX - rect.left;
         mouseY = e.clientY - rect.top;
     });
@@ -420,4 +417,4 @@ additionalStyles.textContent = `
 `;
 document.head.appendChild(additionalStyles);
 
-console.log('Script v4 loaded');
+console.log('Script v5 loaded');
