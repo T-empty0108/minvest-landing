@@ -1,6 +1,6 @@
 /* ==========================================
-   mInvest Smart Trading - JavaScript
-   COLOR SCHEME: Blue Gradient (#0072ff - #00a2ff - #52ebfd)
+   mInvest Smart Trading - JavaScript v3
+   COLOR SCHEME: Blue (#0072ff - #00a2ff - #52ebfd)
 ========================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
