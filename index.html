@@ -499,17 +499,19 @@
                 <!-- Center: Contact Info -->
                 <div class="footer-contact">
                     <h4 class="footer-contact-title">LIÊN HỆ MINVEST ĐỂ ĐƯỢC HỖ TRỢ NHANH NHẤT</h4>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>Hotline: 0969.15.6969</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c1a2aeafb5a0a2b581aca8afb7a4b2b5efb7af">[email&#160;protected]</a></span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-globe"></i>
-                        <span>Website: minvest.vn</span>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>Hotline: 0969.15.6969</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email: contact@minvest.vn</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <span>Website: minvest.vn</span>
+                        </div>
                     </div>
                 </div>
                 
@@ -535,11 +537,18 @@
         </div>
     </footer>
 
-    <!-- Lightbox Modal -->
+    <!-- Lightbox Modal - 2 cột với Card nổi -->
     <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
         <div class="lightbox-content">
-            <button class="lightbox-close" id="lightbox-close">&times;</button>
-            <img src="" alt="Lightbox Image" class="lightbox-image" id="lightbox-image">
+            <div class="lightbox-image-container">
+                <img src="" alt="Lightbox Image" class="lightbox-image" id="lightbox-image">
+            </div>
+            <div class="lightbox-text-card">
+                <div class="lightbox-quote-icon">"</div>
+                <h3 class="lightbox-title" id="lightbox-title"></h3>
+                <p class="lightbox-description" id="lightbox-description"></p>
+            </div>
         </div>
     </div>
 
