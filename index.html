@@ -266,8 +266,8 @@
             <div class="benefits-grid">
                 <!-- Benefit 1 -->
                 <div class="benefit-card gradient-border-card animate-on-scroll slide-up" data-delay="0">
-                    <div class="benefit-image">
-                        <img src="https://placehold.co/400x300/1a1a2e/ffffff?text=Công+thức" alt="Công thức thành công">
+                    <div class="benefit-image" data-lightbox-simple>
+                        <img src="congthuc.jpg" alt="Công thức thành công">
                     </div>
                     <h3 class="benefit-title">Công thức thành công của khóa học</h3>
                     <p class="benefit-description">- Lộ trình học bài bản – học xong chủ động phân tích và giao dịch được<br>- Hỗ trợ sát sao từ mentor & cộng đồng<br>- Tài nguyên & môi trường thực chiến lâu dài<br>- Định hướng lộ trình giao dịch bài bản</p>
@@ -275,8 +275,8 @@
 
                 <!-- Benefit 2 -->
                 <div class="benefit-card gradient-border-card animate-on-scroll slide-up" data-delay="100">
-                    <div class="benefit-image">
-                        <img src="https://placehold.co/400x300/1a1a2e/ffffff?text=Hỗ+trợ" alt="Quyền lợi học viên">
+                    <div class="benefit-image" data-lightbox-simple>
+                        <img src="hotro.jpg" alt="Quyền lợi học viên">
                     </div>
                     <h3 class="benefit-title">Quyền lợi học viên</h3>
                     <p class="benefit-description">- Hỗ trợ trực tiếp 1–1: Mọi vướng mắc trong quá trình học đều được mentor và đội ngũ support mInvest hỗ trợ nhanh chóng<br>- Nhóm lớp tương tác trọn đời: Chữa bài thực hành, hỏi đáp liên tục, kết nối – giao lưu – học hỏi cùng cộng đồng trader<br>- Kho tài liệu độc quyền của khóa học: Nhận giáo trình file mềm + video record toàn bộ nội dung bài giảng<br>- Được hướng dẫn ứng dụng kiến thức vào thực tế, xây dựng phong cách giao dịch hiệu quả – bền vững – phù hợp người mới</p>
@@ -284,8 +284,8 @@
 
                 <!-- Benefit 3 -->
                 <div class="benefit-card gradient-border-card animate-on-scroll slide-up" data-delay="200">
-                    <div class="benefit-image">
-                        <img src="https://placehold.co/400x300/1a1a2e/ffffff?text=VIP" alt="Quyền lợi VIP">
+                    <div class="benefit-image" data-lightbox-simple>
+                        <img src="VIP.jpg" alt="Quyền lợi VIP">
                     </div>
                     <h3 class="benefit-title">Cộng đồng VIP mInvest Private</h3>
                     <p class="benefit-description">Tham gia cộng đồng VIP mInvest Private để nhận thông tin thị trường nhanh nhất, được dẫn dắt bởi đội ngũ chuyên gia giàu kinh nghiệm<br>→ Hỗ trợ phím lệnh – tối ưu điểm vào/ra – quản lý rủi ro.</p>
@@ -506,7 +506,7 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
-                            <span>Email: contact@minvest.vn</span>
+                            <span>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f5969a9b81949681b5989c9b83908681db839b">[email&#160;protected]</a></span>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-globe"></i>
@@ -537,6 +537,14 @@
         </div>
     </footer>
 
+    <!-- Lightbox Simple Modal (cho Benefits - chỉ ảnh) -->
+    <div class="lightbox-simple-overlay" id="lightbox-simple">
+        <div class="lightbox-simple-content">
+            <button class="lightbox-simple-close" id="lightbox-simple-close">&times;</button>
+            <img src="" alt="Lightbox Image" class="lightbox-simple-image" id="lightbox-simple-image">
+        </div>
+    </div>
+
     <!-- Lightbox Modal - 2 cột với Card nổi -->
     <div class="lightbox-overlay" id="lightbox">
         <button class="lightbox-close" id="lightbox-close">&times;</button>
@@ -547,11 +555,4 @@
             <div class="lightbox-text-card">
                 <div class="lightbox-quote-icon">"</div>
                 <h3 class="lightbox-title" id="lightbox-title"></h3>
-                <p class="lightbox-description" id="lightbox-description"></p>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
+                <p class="lightbox-description" id="lightb
