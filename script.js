@@ -9,13 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
     initScrollAnimations();
     initGlobalParticles();
-    initFormHandler();
     initButtonEffects();
     initNumberCounter();
     initTypewriter();
     initScrollProgressBar();
     initMouseGlowEffect();
-    initConfetti();
 });
 
 /* ==========================================
@@ -93,7 +91,6 @@ function createGlobalParticle(container) {
         'rgba(0, 114, 255, 0.4)',
         'rgba(0, 162, 255, 0.4)',
         'rgba(82, 235, 253, 0.3)',
-        'rgba(34, 197, 94, 0.3)',
         'rgba(255, 255, 255, 0.2)'
     ];
     const color = colors[Math.floor(Math.random() * colors.length)];
@@ -128,8 +125,7 @@ function createParticle(container) {
     const colors = [
         'rgba(0, 114, 255, 0.6)',
         'rgba(0, 162, 255, 0.6)',
-        'rgba(82, 235, 253, 0.6)',
-        'rgba(34, 197, 94, 0.4)'
+        'rgba(82, 235, 253, 0.6)'
     ];
     const color = colors[Math.floor(Math.random() * colors.length)];
     
@@ -148,67 +144,7 @@ function createParticle(container) {
 }
 
 /* ==========================================
-   CONFETTI EFFECT cho Tuần 4 Featured - BLUE
-========================================== */
-function initConfetti() {
-    const confettiContainer = document.getElementById('confetti');
-    if (!confettiContainer) return;
-    
-    const confettiCount = 25;
-    // BLUE COLOR PALETTE
-    const colors = ['#0072ff', '#00a2ff', '#52ebfd', '#22c55e', '#ffffff'];
-    
-    for (let i = 0; i < confettiCount; i++) {
-        createConfettiParticle(confettiContainer, colors, i);
-    }
-}
-
-function createConfettiParticle(container, colors, index) {
-    const particle = document.createElement('div');
-    const size = Math.random() * 6 + 3;
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const duration = Math.random() * 4 + 3;
-    const delay = Math.random() * 5;
-    
-    // Distribute around edges
-    let startX, startY;
-    const side = index % 4;
-    
-    if (side === 0) { // top
-        startX = Math.random() * 100;
-        startY = -10;
-    } else if (side === 1) { // right
-        startX = 110;
-        startY = Math.random() * 100;
-    } else if (side === 2) { // bottom
-        startX = Math.random() * 100;
-        startY = 110;
-    } else { // left
-        startX = -10;
-        startY = Math.random() * 100;
-    }
-    
-    const borderRadius = Math.random() > 0.5 ? '50%' : '2px';
-    
-    particle.className = 'confetti-particle';
-    particle.style.cssText = `
-        position: absolute;
-        width: ${size}px;
-        height: ${size}px;
-        left: ${startX}%;
-        top: ${startY}%;
-        background: ${color};
-        border-radius: ${borderRadius};
-        opacity: 0;
-        animation: confetti-float ${duration}s ease-in-out ${delay}s infinite;
-        box-shadow: 0 0 ${size}px ${color};
-    `;
-    
-    container.appendChild(particle);
-}
-
-/* ==========================================
-   NUMBER COUNTER ANIMATION
+   NUMBER COUNTER ANIMATION - YÊU CẦU 5: +2000 màu xanh dương
 ========================================== */
 function initNumberCounter() {
     const counters = document.querySelectorAll('[data-count]');
@@ -233,13 +169,6 @@ function initNumberCounter() {
     
     counters.forEach(counter => {
         observer.observe(counter);
-    });
-    
-    // Auto-detect +2000 text for học viên counter
-    document.querySelectorAll('.highlight-green, .neon-text-green').forEach(el => {
-        if (el.textContent.includes('+0') && el.dataset.count === '2000') {
-            observer.observe(el);
-        }
     });
 }
 
@@ -366,84 +295,6 @@ function initMouseGlowEffect() {
 }
 
 /* ==========================================
-   FORM HANDLER
-========================================== */
-function initFormHandler() {
-    const form = document.getElementById('registerForm');
-    if (!form) return;
-    
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const email = document.getElementById('email').value;
-        const button = form.querySelector('.cta-button-wrapper');
-        const originalText = button.querySelector('.cta-button-text').textContent;
-        
-        button.querySelector('.cta-button-text').textContent = 'ĐANG XỬ LÝ...';
-        button.style.pointerEvents = 'none';
-        
-        setTimeout(() => {
-            button.querySelector('.cta-button-text').textContent = '✓ ĐĂNG KÝ THÀNH CÔNG!';
-            button.style.background = 'linear-gradient(90deg, #22c55e, #16a34a)';
-            
-            showNotification('Thành công! Kiểm tra email để xác nhận đăng ký.', 'success');
-            
-            setTimeout(() => {
-                button.querySelector('.cta-button-text').textContent = originalText;
-                button.style.pointerEvents = 'auto';
-                button.style.background = '';
-                form.reset();
-            }, 3000);
-        }, 1500);
-    });
-}
-
-/* ==========================================
-   NOTIFICATION
-========================================== */
-function showNotification(message, type = 'info') {
-    const existing = document.querySelector('.notification');
-    if (existing) existing.remove();
-    
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <span class="notification-icon">${type === 'success' ? '✓' : 'ℹ'}</span>
-        <span class="notification-message">${message}</span>
-    `;
-    
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 16px 24px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        font-size: 14px;
-        font-weight: 600;
-        z-index: 9999;
-        transform: translateX(120%);
-        transition: transform 0.3s ease;
-        background: ${type === 'success' ? 'linear-gradient(135deg, #22c55e, #16a34a)' : '#0072ff'};
-        color: white;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    setTimeout(() => {
-        notification.style.transform = 'translateX(120%)';
-        setTimeout(() => notification.remove(), 300);
-    }, 4000);
-}
-
-/* ==========================================
    BUTTON EFFECTS
 ========================================== */
 function initButtonEffects() {
@@ -453,9 +304,7 @@ function initButtonEffects() {
         button.classList.add('pulse-animation');
         
         button.addEventListener('click', function(e) {
-            if (this.tagName === 'BUTTON' || this.getAttribute('href') === '#register') {
-                createRipple(e, this);
-            }
+            createRipple(e, this);
         });
     });
 }
@@ -664,49 +513,6 @@ additionalStyles.textContent = `
         background: radial-gradient(circle, rgba(0, 114, 255, 0.15) 0%, rgba(0, 162, 255, 0.05) 40%, transparent 70%);
     }
     
-    /* Confetti Animation */
-    @keyframes confetti-float {
-        0% {
-            opacity: 0;
-            transform: translate(0, 0) rotate(0deg) scale(0);
-        }
-        20% {
-            opacity: 0.8;
-            transform: translate(calc(-50px + 100px * var(--random, 0.5)), calc(-30px + 60px * var(--random, 0.5))) rotate(180deg) scale(1);
-        }
-        50% {
-            opacity: 1;
-        }
-        80% {
-            opacity: 0.6;
-            transform: translate(calc(-30px + 60px * var(--random, 0.5)), calc(-20px + 40px * var(--random, 0.5))) rotate(360deg) scale(0.8);
-        }
-        100% {
-            opacity: 0;
-            transform: translate(0, 0) rotate(540deg) scale(0);
-        }
-    }
-    
-    .confetti-particle {
-        --random: 0.5;
-    }
-    
-    .confetti-particle:nth-child(odd) {
-        --random: 0.3;
-    }
-    
-    .confetti-particle:nth-child(even) {
-        --random: 0.7;
-    }
-    
-    .confetti-particle:nth-child(3n) {
-        --random: 0.9;
-    }
-    
-    .confetti-particle:nth-child(4n) {
-        --random: 0.1;
-    }
-    
     /* Typewriter cursor - BLUE */
     [data-typewriter] {
         display: inline-block;
@@ -718,4 +524,4 @@ document.head.appendChild(additionalStyles);
    CONSOLE EASTER EGG
 ========================================== */
 console.log('%c✦ mInvest Smart Trading', 'font-size: 24px; font-weight: bold; color: #0072ff;');
-console.log('%cKhóa học Trading Forex 5 Tuần - mInvest', 'font-size: 14px; color: #22c55e;');
+console.log('%cKhóa học Trading Forex 5 Tuần - mInvest', 'font-size: 14px; color: #00a2ff;');
