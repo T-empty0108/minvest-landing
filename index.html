@@ -18,18 +18,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Glowing Orbs Background -->
+    <div class="glowing-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero-section" id="hero">
         <div class="hero-bg">
             <div class="hero-gradient"></div>
             <div class="hero-image-container">
-                <img src="hero-image.png" alt="mInvest Smart Trading" class="hero-bg-image">
+                <img src="hero-image.png" alt="mInvest Smart Trading" class="hero-bg-image" id="parallax-hero">
             </div>
             <div id="particles" class="particles-container"></div>
         </div>
 
         <div class="hero-content">
-            <!-- Brand Section - MỚI -->
+            <!-- Brand Section -->
             <div class="brand-section animate-on-scroll fade-in">
                 <div class="brand-row">
                     <div class="brand-badge">
@@ -61,8 +68,8 @@
 
             <!-- CTA Button -->
             <div class="cta-container animate-on-scroll zoom-in" data-delay="400">
-                <a href="https://zalo.me/0969156969" class="cta-button-wrapper large">
-                    <span class="cta-button-text">ĐĂNG KÝ NHẬN ƯU ĐÃI</span>
+                <a href="https://zalo.me/0969156969" class="cta-button-wrapper large magnetic-btn">
+                    <span class="cta-button-text gradient-animation">ĐĂNG KÝ NHẬN ƯU ĐÃI</span>
                     <span class="cta-button-glow"></span>
                 </a>
             </div>
@@ -81,6 +88,22 @@
         </div>
     </section>
 
+    <!-- Wave Divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="url(#wave-gradient)"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="url(#wave-gradient)"></path>
+            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,googl172.46-45.71,248.8-84.81V0Z" fill="url(#wave-gradient)"></path>
+            <defs>
+                <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#0072ff;stop-opacity:0.3" />
+                    <stop offset="50%" style="stop-color:#00a2ff;stop-opacity:0.2" />
+                    <stop offset="100%" style="stop-color:#52ebfd;stop-opacity:0.3" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
     <!-- Video Section -->
     <section class="video-section" id="video">
         <div class="container">
@@ -97,12 +120,29 @@
         </div>
     </section>
 
-    <!-- Schedule Section -->
+    <!-- Wave Divider -->
+    <div class="wave-divider flip">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="url(#wave-gradient2)"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="url(#wave-gradient2)"></path>
+            <defs>
+                <linearGradient id="wave-gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#0072ff;stop-opacity:0.3" />
+                    <stop offset="50%" style="stop-color:#00a2ff;stop-opacity:0.2" />
+                    <stop offset="100%" style="stop-color:#52ebfd;stop-opacity:0.3" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- Schedule Section with Cursor Glow -->
     <section class="schedule-section" id="schedule">
+        <div class="cursor-glow" id="cursor-glow"></div>
         <div class="container">
-            <div class="schedule-badge animate-on-scroll fade-in">5 TUẦN HỌC</div>
-            
             <div class="schedule-card">
+                <!-- Badge TRONG card -->
+                <div class="schedule-badge animate-on-scroll fade-in">5 TUẦN HỌC</div>
+                
                 <h2 class="schedule-title">CHƯƠNG TRÌNH ĐÀO TẠO<br>TRADING FOREX</h2>
                 <p class="schedule-subtitle">Lộ trình 5 tuần với 12 buổi học chuyên sâu cùng mInvest</p>
 
@@ -178,11 +218,27 @@
         </div>
     </section>
 
-    <!-- Story Section -->
+    <!-- Wave Divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="url(#wave-gradient3)"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="url(#wave-gradient3)"></path>
+            <defs>
+                <linearGradient id="wave-gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#0072ff;stop-opacity:0.3" />
+                    <stop offset="50%" style="stop-color:#00a2ff;stop-opacity:0.2" />
+                    <stop offset="100%" style="stop-color:#52ebfd;stop-opacity:0.3" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
+    <!-- Story Section with Typing Effect -->
     <section class="story-section" id="story">
         <div class="container">
             <h2 class="story-headline animate-on-scroll fade-in">
-                Sau <span class="highlight neon-text">10 năm</span> giao dịch trên thị trường và <span class="gradient-text">đào tạo thực chiến</span>
+                <span class="typing-text" id="typing-text"></span>
+                <span class="typing-cursor">|</span>
             </h2>
         </div>
     </section>
@@ -222,13 +278,28 @@
 
             <p class="benefits-cta-text animate-on-scroll fade-in">Học đúng phương pháp, đi cùng cộng đồng đầu tư chuyên nghiệp, xây dựng con đường đầu tư dài hạn bền vững.</p>
             <div class="benefits-cta animate-on-scroll zoom-in">
-                <a href="https://zalo.me/0969156969" class="cta-button-wrapper">
-                    <span class="cta-button-text">ĐĂNG KÝ NHẬN ƯU ĐÃI</span>
+                <a href="https://zalo.me/0969156969" class="cta-button-wrapper magnetic-btn">
+                    <span class="cta-button-text gradient-animation">ĐĂNG KÝ NHẬN ƯU ĐÃI</span>
                     <span class="cta-button-glow"></span>
                 </a>
             </div>
         </div>
     </section>
+
+    <!-- Wave Divider -->
+    <div class="wave-divider flip">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="url(#wave-gradient4)"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="url(#wave-gradient4)"></path>
+            <defs>
+                <linearGradient id="wave-gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#0072ff;stop-opacity:0.3" />
+                    <stop offset="50%" style="stop-color:#00a2ff;stop-opacity:0.2" />
+                    <stop offset="100%" style="stop-color:#52ebfd;stop-opacity:0.3" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
 
     <!-- Proof Section -->
     <section class="proof-section" id="proof">
@@ -259,8 +330,8 @@
                 </div>
 
                 <div class="proof-cta animate-on-scroll zoom-in" data-delay="400">
-                    <a href="https://zalo.me/0969156969" class="cta-button-wrapper">
-                        <span class="cta-button-text">ĐĂNG KÝ NHẬN ƯU ĐÃI</span>
+                    <a href="https://zalo.me/0969156969" class="cta-button-wrapper magnetic-btn">
+                        <span class="cta-button-text gradient-animation">ĐĂNG KÝ NHẬN ƯU ĐÃI</span>
                         <span class="cta-button-glow"></span>
                     </a>
                 </div>
@@ -273,8 +344,10 @@
         <div class="container">
             <h2 class="timeline-main-title animate-on-scroll fade-in">Học viên nói gì về khóa học</h2>
             <div class="timeline-zigzag">
-                <!-- Vertical Line -->
-                <div class="timeline-vertical-line"></div>
+                <!-- Vertical Line with Flowing Light -->
+                <div class="timeline-vertical-line">
+                    <div class="flowing-light"></div>
+                </div>
                 
                 <!-- Item 1 -->
                 <div class="timeline-item-zigzag animate-on-scroll fade-in" data-delay="0">
@@ -283,7 +356,11 @@
                             <img src="timeline-1.png" alt="Học viên FTMO" class="timeline-img">
                         </div>
                     </div>
-                    <div class="timeline-marker-zigzag"><span class="marker-icon">✦</span></div>
+                    <div class="timeline-marker-zigzag">
+                        <div class="marker-ripple"></div>
+                        <div class="marker-ripple ripple-2"></div>
+                        <span class="marker-icon">✦</span>
+                    </div>
                     <div class="timeline-content-side">
                         <h3 class="timeline-title-zigzag gradient-text-pink">Từ học viên Smart Trading → Pass quỹ FTMO 200K</h3>
                         <p class="timeline-text-zigzag">Nhờ các video và kiến thức trong Smart Trading, mình tự tin vào lệnh hơn rất nhiều và đã pass quỹ FTMO 200K. Điều mình học được không chỉ là điểm vào lệnh, mà là tư duy quản lý vốn và kỷ luật giao dịch.</p>
@@ -296,7 +373,11 @@
                         <h3 class="timeline-title-zigzag gradient-text-pink">Biết chờ điểm vào – không còn cuống khi thị trường chạy</h3>
                         <p class="timeline-text-zigzag">Trước đây mình hay vào lệnh trễ, lệch giá chỉ vài giây là miss kèo. Từ khi học Smart Trading, mình biết cách chờ đúng thời điểm, không còn bị cuốn theo thông báo trong nhóm nữa.</p>
                     </div>
-                    <div class="timeline-marker-zigzag"><span class="marker-icon">✦</span></div>
+                    <div class="timeline-marker-zigzag">
+                        <div class="marker-ripple"></div>
+                        <div class="marker-ripple ripple-2"></div>
+                        <span class="marker-icon">✦</span>
+                    </div>
                     <div class="timeline-image-side">
                         <div class="timeline-image-wrapper" data-lightbox>
                             <img src="timeline-2.png" alt="Học viên chờ điểm vào" class="timeline-img">
@@ -311,7 +392,11 @@
                             <img src="timeline-3.png" alt="Học viên áp dụng" class="timeline-img">
                         </div>
                     </div>
-                    <div class="timeline-marker-zigzag"><span class="marker-icon">✦</span></div>
+                    <div class="timeline-marker-zigzag">
+                        <div class="marker-ripple"></div>
+                        <div class="marker-ripple ripple-2"></div>
+                        <span class="marker-icon">✦</span>
+                    </div>
                     <div class="timeline-content-side">
                         <h3 class="timeline-title-zigzag gradient-text-pink">Học hôm trước – áp dụng chuẩn ngay hôm sau</h3>
                         <p class="timeline-text-zigzag">Mấy mẹo thầy dạy trong buổi học mình áp dụng vào chart rất rõ ràng. Không còn trade mơ hồ, mỗi lệnh vào đều có lý do.</p>
@@ -324,7 +409,11 @@
                         <h3 class="timeline-title-zigzag gradient-text-pink">Smart Trading giúp mình sửa sai những lỗi từng làm cháy tài khoản</h3>
                         <p class="timeline-text-zigzag">Sau khi đọc nhận xét và làm bài tập trong khóa học, mình nhận ra rất nhiều lỗi cũ: vào lệnh theo cảm xúc, không thoải mái vẫn trade. Giờ mình biết khi nào nên đứng ngoài, khi nào nên thoát lệnh để bảo toàn vốn.</p>
                     </div>
-                    <div class="timeline-marker-zigzag"><span class="marker-icon">✦</span></div>
+                    <div class="timeline-marker-zigzag">
+                        <div class="marker-ripple"></div>
+                        <div class="marker-ripple ripple-2"></div>
+                        <span class="marker-icon">✦</span>
+                    </div>
                     <div class="timeline-image-side">
                         <div class="timeline-image-wrapper" data-lightbox>
                             <img src="timeline-4.png" alt="Học viên sửa lỗi" class="timeline-img">
@@ -339,7 +428,11 @@
                             <img src="timeline-5.png" alt="Học viên thành công" class="timeline-img">
                         </div>
                     </div>
-                    <div class="timeline-marker-zigzag"><span class="marker-icon">✦</span></div>
+                    <div class="timeline-marker-zigzag">
+                        <div class="marker-ripple"></div>
+                        <div class="marker-ripple ripple-2"></div>
+                        <span class="marker-icon">✦</span>
+                    </div>
                     <div class="timeline-content-side">
                         <h3 class="timeline-title-zigzag gradient-text-pink">Không còn nhảy tàu – không còn trade theo cảm xúc</h3>
                         <p class="timeline-text-zigzag">Smart Trading giúp mình hiểu rõ cấu trúc thị trường, cách đặt TP/SL linh động và giữ tỷ lệ R:R hợp lý. Trade giờ không còn là may rủi, mà là một hệ thống có kế hoạch.</p>
@@ -349,6 +442,21 @@
         </div>
     </section>
 
+    <!-- Wave Divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="url(#wave-gradient5)"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="url(#wave-gradient5)"></path>
+            <defs>
+                <linearGradient id="wave-gradient5" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#0072ff;stop-opacity:0.3" />
+                    <stop offset="50%" style="stop-color:#00a2ff;stop-opacity:0.2" />
+                    <stop offset="100%" style="stop-color:#52ebfd;stop-opacity:0.3" />
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
+
     <!-- Final CTA Section -->
     <section class="cta-section" id="cta">
         <div class="container">
@@ -356,8 +464,8 @@
                 <h2 class="cta-title">LÀM CHỦ THỊ TRƯỜNG - GIAO DỊCH CÓ HỆ THỐNG</h2>
                 <p class="cta-subtitle"><span class="highlight-text">Smart Trading</span> giúp bạn hiểu thị trường đang vận hành thế nào. Không giao dịch theo cảm xúc, không FOMO, không cháy tài khoản</p>
                 <div class="cta-button-container">
-                    <a href="https://zalo.me/0969156969" class="cta-button-wrapper large">
-                        <span class="cta-button-text">ĐĂNG KÝ NHẬN ƯU ĐÃI</span>
+                    <a href="https://zalo.me/0969156969" class="cta-button-wrapper large magnetic-btn">
+                        <span class="cta-button-text gradient-animation">ĐĂNG KÝ NHẬN ƯU ĐÃI</span>
                         <span class="cta-button-glow"></span>
                     </a>
                 </div>
@@ -394,7 +502,7 @@
         </div>
     </footer>
 
-    <!-- Lightbox Simple (cho Benefits - chỉ ảnh) -->
+    <!-- Lightbox Simple -->
     <div class="lightbox-simple-overlay" id="lightbox-simple">
         <div class="lightbox-simple-content">
             <button class="lightbox-simple-close" id="lightbox-simple-close">&times;</button>
@@ -402,7 +510,7 @@
         </div>
     </div>
 
-    <!-- Lightbox Full (cho Timeline - có text) -->
+    <!-- Lightbox Full -->
     <div class="lightbox-overlay" id="lightbox">
         <button class="lightbox-close" id="lightbox-close">&times;</button>
         <div class="lightbox-content">
