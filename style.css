@@ -113,6 +113,7 @@ body {
         0 0 10px rgba(0, 162, 255, 0.8),
         0 0 20px rgba(0, 162, 255, 0.6),
         0 0 40px rgba(0, 162, 255, 0.4);
+    font-weight: 800;
 }
 
 .highlight-blue {
@@ -1699,25 +1700,24 @@ body {
         text-align: center;
     }
 
-    .timeline-item-zigzag.reverse .timeline-content-side {
-        text-align: center;
-        order: unset;
-    }
-
-    .timeline-item-zigzag.reverse .timeline-image-side {
-        order: unset;
-    }
-
-    .timeline-image-side {
+    /* Mobile: Luôn hiển thị Ảnh trước, Text sau */
+    .timeline-item-zigzag .timeline-image-side {
+        order: 1 !important;
         justify-content: center !important;
+    }
+    
+    .timeline-item-zigzag .timeline-marker-zigzag {
+        order: 2 !important;
+        margin: 0 auto;
+    }
+    
+    .timeline-item-zigzag .timeline-content-side {
+        order: 3 !important;
+        text-align: center !important;
     }
 
     .timeline-line {
         display: none;
-    }
-
-    .timeline-marker-zigzag {
-        margin: 0 auto;
     }
 
     .timeline-image-wrapper {
