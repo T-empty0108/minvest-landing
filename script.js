@@ -1,10 +1,10 @@
 /* ==========================================
-   mInvest Smart Trading - JavaScript v3
-   COLOR SCHEME: Blue (#0072ff - #00a2ff - #52ebfd)
+   mInvest Smart Trading - JavaScript v4
+   NEW: Typing Effect, Parallax, Magnetic Buttons, Cursor Glow
 ========================================== */
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded - initializing...');
+    console.log('DOM loaded - initializing v4...');
     document.body.classList.add('js-ready');
     
     initScrollAnimations();
@@ -13,8 +13,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initNumberCounter();
     initScrollProgressBar();
     initLightbox();
+    initTypingEffect();
+    initParallax();
+    initMagneticButtons();
+    initCursorGlow();
     
-    console.log('All functions initialized');
+    console.log('All v4 functions initialized');
 });
 
 /* ==========================================
@@ -81,7 +85,6 @@ function createGlobalParticle(container) {
 ========================================== */
 function initNumberCounter() {
     const counters = document.querySelectorAll('[data-count]');
-    console.log('Found counters:', counters.length);
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -92,7 +95,6 @@ function initNumberCounter() {
                 const suffix = element.dataset.suffix || '';
                 const decimals = parseInt(element.dataset.decimals) || 0;
                 
-                console.log('Starting counter animation to:', target);
                 animateCounter(element, target, prefix, suffix, decimals, 2500);
                 observer.unobserve(element);
             }
@@ -156,35 +158,156 @@ function initButtonEffects() {
 }
 
 /* ==========================================
-   LIGHTBOX - MAIN FUNCTION
+   TYPING EFFECT
+========================================== */
+function initTypingEffect() {
+    const typingElement = document.getElementById('typing-text');
+    if (!typingElement) return;
+    
+    const fullText = 'Sau 10 năm giao dịch trên thị trường và đào tạo thực chiến';
+    let currentIndex = 0;
+    let isTyping = false;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !isTyping) {
+                isTyping = true;
+                typeText();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    observer.observe(typingElement.parentElement);
+    
+    function typeText() {
+        if (currentIndex < fullText.length) {
+            // Xử lý highlight cho "10 năm" và "đào tạo thực chiến"
+            let displayText = fullText.substring(0, currentIndex + 1);
+            
+            // Highlight "10 năm"
+            displayText = displayText.replace('10 năm', '<span class="neon-text">10 năm</span>');
+            // Highlight "đào tạo thực chiến"
+            displayText = displayText.replace('đào tạo thực chiến', '<span class="gradient-text">đào tạo thực chiến</span>');
+            
+            typingElement.innerHTML = displayText;
+            currentIndex++;
+            setTimeout(typeText, 50);
+        }
+    }
+}
+
+/* ==========================================
+   PARALLAX SCROLLING
+========================================== */
+function initParallax() {
+    const heroImage = document.getElementById('parallax-hero');
+    if (!heroImage) return;
+    
+    let ticking = false;
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrolled = window.pageYOffset;
+                const heroSection = document.getElementById('hero');
+                
+                if (heroSection) {
+                    const heroHeight = heroSection.offsetHeight;
+                    
+                    // Chỉ áp dụng parallax khi trong vùng hero
+                    if (scrolled <= heroHeight) {
+                        const parallaxSpeed = 0.5;
+                        heroImage.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+                    }
+                }
+                
+                ticking = false;
+            });
+            
+            ticking = true;
+        }
+    });
+}
+
+/* ==========================================
+   MAGNETIC BUTTONS
+========================================== */
+function initMagneticButtons() {
+    const magneticBtns = document.querySelectorAll('.magnetic-btn');
+    
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            // Giới hạn di chuyển tối đa 10px
+            const maxMove = 10;
+            const moveX = (x / rect.width) * maxMove * 2;
+            const moveY = (y / rect.height) * maxMove * 2;
+            
+            this.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        });
+        
+        btn.addEventListener('mouseleave', function() {
+            this.style.transform = 'translate(0, 0)';
+        });
+    });
+}
+
+/* ==========================================
+   CURSOR GLOW EFFECT (Schedule Section)
+========================================== */
+function initCursorGlow() {
+    const scheduleSection = document.getElementById('schedule');
+    const cursorGlow = document.getElementById('cursor-glow');
+    
+    if (!scheduleSection || !cursorGlow) return;
+    
+    let mouseX = 0, mouseY = 0;
+    let currentX = 0, currentY = 0;
+    
+    scheduleSection.addEventListener('mousemove', (e) => {
+        const rect = scheduleSection.getBoundingClientRect();
+        mouseX = e.clientX - rect.left;
+        mouseY = e.clientY - rect.top;
+    });
+    
+    // Smooth follow
+    function animateCursor() {
+        const ease = 0.1;
+        currentX += (mouseX - currentX) * ease;
+        currentY += (mouseY - currentY) * ease;
+        
+        cursorGlow.style.left = currentX + 'px';
+        cursorGlow.style.top = currentY + 'px';
+        
+        requestAnimationFrame(animateCursor);
+    }
+    
+    animateCursor();
+}
+
+/* ==========================================
+   LIGHTBOX
 ========================================== */
 function initLightbox() {
-    console.log('Initializing lightbox...');
-    
-    // === LIGHTBOX SIMPLE (Benefits - chỉ ảnh) ===
+    // === LIGHTBOX SIMPLE (Benefits) ===
     const lightboxSimple = document.getElementById('lightbox-simple');
     const lightboxSimpleImage = document.getElementById('lightbox-simple-image');
     const lightboxSimpleClose = document.getElementById('lightbox-simple-close');
     const benefitImages = document.querySelectorAll('[data-lightbox-simple]');
     
-    console.log('Lightbox Simple elements:', {
-        overlay: !!lightboxSimple,
-        image: !!lightboxSimpleImage,
-        close: !!lightboxSimpleClose,
-        triggers: benefitImages.length
-    });
-    
     if (lightboxSimple && lightboxSimpleImage) {
-        benefitImages.forEach((wrapper, index) => {
+        benefitImages.forEach((wrapper) => {
             wrapper.style.cursor = 'pointer';
             wrapper.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log('Benefit image clicked:', index);
                 
                 const img = this.querySelector('img');
                 if (img && img.src) {
-                    console.log('Opening lightbox simple with:', img.src);
                     lightboxSimpleImage.src = img.src;
                     lightboxSimpleImage.alt = img.alt || 'Image';
                     lightboxSimple.classList.add('active');
@@ -206,12 +329,11 @@ function initLightbox() {
     }
     
     function closeLightboxSimple() {
-        console.log('Closing lightbox simple');
         lightboxSimple.classList.remove('active');
         document.body.style.overflow = '';
     }
     
-    // === LIGHTBOX FULL (Timeline - ảnh + text) ===
+    // === LIGHTBOX FULL (Timeline) ===
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxTitle = document.getElementById('lightbox-title');
@@ -219,22 +341,12 @@ function initLightbox() {
     const lightboxClose = document.getElementById('lightbox-close');
     const timelineImages = document.querySelectorAll('[data-lightbox]');
     
-    console.log('Lightbox Full elements:', {
-        overlay: !!lightbox,
-        image: !!lightboxImage,
-        title: !!lightboxTitle,
-        desc: !!lightboxDescription,
-        close: !!lightboxClose,
-        triggers: timelineImages.length
-    });
-    
     if (lightbox && lightboxImage) {
-        timelineImages.forEach((wrapper, index) => {
+        timelineImages.forEach((wrapper) => {
             wrapper.style.cursor = 'pointer';
             wrapper.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                console.log('Timeline image clicked:', index);
                 
                 const img = this.querySelector('img');
                 const timelineItem = this.closest('.timeline-item-zigzag');
@@ -243,7 +355,6 @@ function initLightbox() {
                     const titleEl = timelineItem.querySelector('.timeline-title-zigzag');
                     const descEl = timelineItem.querySelector('.timeline-text-zigzag');
                     
-                    console.log('Opening lightbox full with:', img.src);
                     lightboxImage.src = img.src;
                     lightboxImage.alt = img.alt || 'Image';
                     
@@ -269,7 +380,6 @@ function initLightbox() {
     }
     
     function closeLightbox() {
-        console.log('Closing lightbox full');
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
     }
@@ -285,8 +395,6 @@ function initLightbox() {
             }
         }
     });
-    
-    console.log('Lightbox initialization complete');
 }
 
 /* ==========================================
@@ -312,4 +420,4 @@ additionalStyles.textContent = `
 `;
 document.head.appendChild(additionalStyles);
 
-console.log('Script loaded');
+console.log('Script v4 loaded');
