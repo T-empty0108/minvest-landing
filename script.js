@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initTypewriter();
     initScrollProgressBar();
     initMouseGlowEffect();
+    initLightbox();
 });
 
 /* ==========================================
@@ -643,8 +644,3 @@ function initLightbox() {
         document.body.style.overflow = '';
     }
 }
-
-// Initialize lightbox after DOM loaded
-document.addEventListener('DOMContentLoaded', function() {
-    initLightbox();
-});
