@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
     <!-- Styles -->
     <link rel="stylesheet" href="style.css">
     
@@ -53,10 +56,10 @@
                     </div>
                 </div>
 
-                <!-- Headline -->
+                <!-- Headline - YÊU CẦU 7a: Căn giữa -->
                 <h1 class="hero-headline animate-on-scroll fade-in" data-delay="100">
                     <span class="headline-line1">30 Ngày Làm Chủ <span class="gradient-text">Tư Duy Và Dòng Tiền</span></span>
-                    <span class="headline-line2"><span class="gradient-text-alt">Smart Trading</span> - Chiến Lược Bứt Phá 2026</span>
+                    <span class="headline-line2"><span class="gradient-text">Smart Trading</span> - Chiến Lược Bứt Phá 2026</span>
                 </h1>
 
                 <p class="hero-subheadline animate-on-scroll fade-in" data-delay="200">
@@ -85,10 +88,26 @@
         </div>
     </section>
 
+    <!-- YÊU CẦU 10: Video Section - Trước 5 TUẦN HỌC -->
+    <section class="video-section" id="video">
+        <div class="container">
+            <h2 class="video-title animate-on-scroll fade-in">GIỚI THIỆU KHÓA HỌC</h2>
+            <div class="video-wrapper animate-on-scroll zoom-in" data-delay="100">
+                <iframe 
+                    src="https://www.youtube.com/embed/mq7fQJwAgKY?autoplay=1&mute=1&loop=1&playlist=mq7fQJwAgKY" 
+                    title="Giới thiệu khóa học mInvest Smart Trading"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </section>
+
     <!-- Schedule Section - 5 TUẦN HỌC -->
     <section class="schedule-section" id="learn">
         <div class="container">
-            <!-- Schedule Card -->
+            <!-- Schedule Card - YÊU CẦU 4: Bỏ spotlight, thu gọn padding -->
             <div class="schedule-card animate-on-scroll zoom-in">
                 <!-- Badge -->
                 <div class="schedule-badge">
@@ -99,12 +118,14 @@
                 <h2 class="schedule-title">CHƯƠNG TRÌNH ĐÀO TẠO<br>TRADING FOREX</h2>
                 <p class="schedule-subtitle">Lộ trình 5 tuần với 12 buổi học chuyên sâu cùng mInvest</p>
 
-                <!-- Weeks Grid -->
+                <!-- Weeks Grid - YÊU CẦU 2, 3: Bo viền gradient + chiều cao bằng nhau -->
                 <div class="weeks-grid">
                     <!-- Tuần 0 -->
                     <div class="week-card animate-on-scroll fade-in" data-delay="0">
-                        <div class="week-header">
-                            <span class="week-number">TUẦN 0</span>
+                        <div class="week-header-wrapper">
+                            <div class="week-header">
+                                <span class="week-number">TUẦN 0</span>
+                            </div>
                         </div>
                         <h3 class="week-title">Chuẩn bị</h3>
                         <div class="week-sessions">
@@ -125,8 +146,10 @@
 
                     <!-- Tuần 1 -->
                     <div class="week-card animate-on-scroll fade-in" data-delay="100">
-                        <div class="week-header">
-                            <span class="week-number">TUẦN 1</span>
+                        <div class="week-header-wrapper">
+                            <div class="week-header">
+                                <span class="week-number">TUẦN 1</span>
+                            </div>
                         </div>
                         <h3 class="week-title">Nhập môn thị trường</h3>
                         <div class="week-sessions">
@@ -147,8 +170,10 @@
 
                     <!-- Tuần 2 -->
                     <div class="week-card animate-on-scroll fade-in" data-delay="200">
-                        <div class="week-header">
-                            <span class="week-number">TUẦN 2</span>
+                        <div class="week-header-wrapper">
+                            <div class="week-header">
+                                <span class="week-number">TUẦN 2</span>
+                            </div>
                         </div>
                         <h3 class="week-title">Tiếp cận thị trường</h3>
                         <div class="week-sessions">
@@ -166,17 +191,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Row 2: Spotlight Left + Tuần 3 + Tuần 4 + Spotlight Right -->
-                <div class="weeks-row-2">
-                    <!-- Spotlight Left -->
-                    <div class="spotlight-side spotlight-left-side"></div>
 
                     <!-- Tuần 3 -->
                     <div class="week-card animate-on-scroll fade-in" data-delay="300">
-                        <div class="week-header">
-                            <span class="week-number">TUẦN 3</span>
+                        <div class="week-header-wrapper">
+                            <div class="week-header">
+                                <span class="week-number">TUẦN 3</span>
+                            </div>
                         </div>
                         <h3 class="week-title">Hướng dẫn sử dụng các chỉ báo</h3>
                         <div class="week-sessions">
@@ -197,8 +218,10 @@
 
                     <!-- Tuần 4 - Featured -->
                     <div class="week-card week-card-featured animate-on-scroll fade-in" data-delay="400">
-                        <div class="week-header">
-                            <span class="week-number">TUẦN 4</span>
+                        <div class="week-header-wrapper">
+                            <div class="week-header">
+                                <span class="week-number">TUẦN 4</span>
+                            </div>
                         </div>
                         <h3 class="week-title">Thực chiến giao dịch <span class="live-text">LIVE!</span></h3>
                         <div class="week-sessions">
@@ -216,9 +239,13 @@
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Spotlight Right -->
-                    <div class="spotlight-side spotlight-right-side"></div>
+                <!-- Stage Lights -->
+                <div class="stage-lights">
+                    <div class="light light-1"></div>
+                    <div class="light light-2"></div>
+                    <div class="light light-3"></div>
                 </div>
             </div>
         </div>
@@ -233,7 +260,7 @@
         </div>
     </section>
 
-    <!-- Benefits Section -->
+    <!-- Benefits Section - YÊU CẦU 8: Tăng cỡ chữ -->
     <section class="benefits-section" id="benefits">
         <div class="container">
             <div class="benefits-intro animate-on-scroll fade-in">
@@ -281,7 +308,7 @@
         </div>
     </section>
 
-    <!-- Social Proof Section -->
+    <!-- Social Proof Section - YÊU CẦU 5: Đổi màu xanh lá → xanh dương -->
     <section class="proof-section" id="proof">
         <!-- Background Glow Effects -->
         <div class="proof-bg-glow"></div>
@@ -292,10 +319,10 @@
                 <!-- Header -->
                 <div class="proof-header">
                     <h2 class="proof-title">
-                        <span class="highlight-green neon-text-green" data-count="2000" data-prefix="+" data-suffix="" data-decimals="0">+0</span> Học viên đã tham gia vào khóa học
+                        <span class="highlight-blue neon-text-blue" data-count="2000" data-prefix="+" data-suffix="" data-decimals="0">+0</span> Học viên đã tham gia vào khóa học
                     </h2>
                     <p class="proof-subtitle">
-                        Hãy học bằng tất cả nhiệt huyết và khát khao làm chủ tài chính. Khi bạn thật sự nghiêm túc và kỷ luật thành công sẽ đến. <strong>Lưu ý khóa học này chỉ dành cho những ai từ 18 tuổi trở lên.</strong>
+                        Hãy học bằng tất cả nhiệt huyết và khát khao làm chủ tài chính. Khi bạn thật sự nghiêm túc và kỷ luật thành công sẽ đến. <strong class="note-blue">Lưu ý khóa học này chỉ dành cho những ai từ 18 tuổi trở lên.</strong>
                     </p>
                 </div>
 
@@ -426,7 +453,7 @@
                 <!-- Item 5 - Image Left (Highlight) -->
                 <div class="timeline-item-zigzag highlight animate-on-scroll fade-in" data-delay="400">
                     <div class="timeline-image-side">
-                        <div class="timeline-image-wrapper gradient-border-card glow-green">
+                        <div class="timeline-image-wrapper gradient-border-card glow-blue">
                             <img src="timeline-5.png" alt="Học viên thành công" class="timeline-img">
                         </div>
                     </div>
@@ -442,23 +469,20 @@
         </div>
     </section>
 
-    <!-- Final CTA Section -->
+    <!-- Final CTA Section - YÊU CẦU 6: Bỏ email -->
     <section class="cta-section" id="register">
         <div class="container">
             <div class="cta-content animate-on-scroll zoom-in">
                 <h2 class="cta-title">LÀM CHỦ THỊ TRƯỜNG - GIAO DỊCH CÓ HỆ THỐNG</h2>
                 <p class="cta-subtitle">Smart Trading giúp bạn hiểu thị trường đang vận hành thế nào. Không giao dịch theo cảm xúc, không FOMO, không cháy tài khoản</p>
                 
-                <form class="register-form" id="registerForm">
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Email của bạn" required class="glass-input">
-                    </div>
+                <div class="cta-button-container">
                     <a href="https://zalo.me/0969156969" target="_blank" class="cta-button-wrapper large">
                         <span class="cta-button-bg"></span>
                         <span class="cta-button-text">ĐĂNG KÝ NHẬN ƯU ĐÃI</span>
                         <span class="cta-shine"></span>
                     </a>
-                </form>
+                </div>
 
                 <div class="cta-trust">
                     <span>Làm chủ tài chính cá nhân ngay hôm nay</span>
@@ -467,20 +491,50 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - YÊU CẦU 9: Footer mới theo mẫu -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
+                <!-- Left: Logo -->
                 <div class="footer-logo">
-                    <span class="logo-icon">✦Khóa học</span>
-                    <span class="logo-text">mInvest</span>
+                    <img src="Logo_ngang.png" alt="mInvest Logo" class="footer-logo-img">
                 </div>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Contact</a>
+                
+                <!-- Center: Contact Info -->
+                <div class="footer-contact">
+                    <h4 class="footer-contact-title">LIÊN HỆ MINVEST ĐỂ ĐƯỢC HỖ TRỢ NHANH NHẤT</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Hotline: 0969.15.6969</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email: contact@minvest.vn</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <span>Website: minvest.vn</span>
+                    </div>
                 </div>
-                <p class="footer-copyright">© 2026 mInvest Education. All rights reserved.</p>
+                
+                <!-- Right: Social Links -->
+                <div class="footer-social">
+                    <h4 class="footer-social-title">FOLLOW MINVEST</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/minvest.vn" target="_blank" class="social-icon facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://t.me/minvest_free" target="_blank" class="social-icon telegram">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@minvestvn" target="_blank" class="social-icon youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@minvest.minh" target="_blank" class="social-icon tiktok">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
