@@ -48,8 +48,6 @@ gradient(180deg, #0a0a0f 0%, #0a1220 50%, #0a0a0f 100%);
     letter-spacing: 2px;
     color: #52ebfd;
     margin-bottom: 30px;
-    text-align: center;
-    width: 100%;
 }
 
 .schedule-card {
@@ -418,6 +416,25 @@ gradient(180deg, #0a0a0f 0%, #0a1220 50%, #0a0a0f 100%);
 .timeline-zigzag {
     max-width: 1100px;
     margin: 0 auto;
+    position: relative;
+}
+
+/* Đường line dọc nối các marker */
+.timeline-zigzag::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(0, 114, 255, 0.5) 10%, 
+        rgba(0, 162, 255, 0.5) 50%, 
+        rgba(82, 235, 253, 0.5) 90%, 
+        transparent 100%);
+    transform: translateX(-50%);
+    z-index: 0;
 }
 
 .timeline-item-zigzag {
@@ -478,6 +495,8 @@ gradient(180deg, #0a0a0f 0%, #0a1220 50%, #0a0a0f 100%);
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 20px rgba(0, 114, 255, 0.5);
+    position: relative;
+    z-index: 2;
 }
 
 .marker-icon {
@@ -810,6 +829,10 @@ gradient(180deg, #0a0a0f 0%, #0a1220 50%, #0a0a0f 100%);
    RESPONSIVE
 ========================================== */
 @media (max-width: 900px) {
+    .timeline-zigzag::before {
+        display: none;
+    }
+    
     .timeline-item-zigzag {
         grid-template-columns: 1fr;
         gap: 20px;
