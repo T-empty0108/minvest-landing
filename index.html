@@ -385,7 +385,7 @@
                 <!-- Item 1 - Image Left -->
                 <div class="timeline-item-zigzag animate-on-scroll fade-in" data-delay="0">
                     <div class="timeline-image-side">
-                        <div class="timeline-image-wrapper gradient-border-card">
+                        <div class="timeline-image-wrapper" data-lightbox>
                             <img src="timeline-1.png" alt="Học viên FTMO" class="timeline-img">
                         </div>
                     </div>
@@ -408,7 +408,7 @@
                         <span class="marker-icon">✦</span>
                     </div>
                     <div class="timeline-image-side">
-                        <div class="timeline-image-wrapper gradient-border-card">
+                        <div class="timeline-image-wrapper" data-lightbox>
                             <img src="timeline-2.png" alt="Học viên chờ điểm vào" class="timeline-img">
                         </div>
                     </div>
@@ -417,7 +417,7 @@
                 <!-- Item 3 - Image Left -->
                 <div class="timeline-item-zigzag animate-on-scroll fade-in" data-delay="200">
                     <div class="timeline-image-side">
-                        <div class="timeline-image-wrapper gradient-border-card">
+                        <div class="timeline-image-wrapper" data-lightbox>
                             <img src="timeline-3.png" alt="Học viên áp dụng" class="timeline-img">
                         </div>
                     </div>
@@ -440,7 +440,7 @@
                         <span class="marker-icon">✦</span>
                     </div>
                     <div class="timeline-image-side">
-                        <div class="timeline-image-wrapper gradient-border-card">
+                        <div class="timeline-image-wrapper" data-lightbox>
                             <img src="timeline-4.png" alt="Học viên sửa lỗi" class="timeline-img">
                         </div>
                     </div>
@@ -449,7 +449,7 @@
                 <!-- Item 5 - Image Left (Highlight) -->
                 <div class="timeline-item-zigzag highlight animate-on-scroll fade-in" data-delay="400">
                     <div class="timeline-image-side">
-                        <div class="timeline-image-wrapper gradient-border-card glow-blue">
+                        <div class="timeline-image-wrapper" data-lightbox>
                             <img src="timeline-5.png" alt="Học viên thành công" class="timeline-img">
                         </div>
                     </div>
@@ -530,3 +530,19 @@
                             <i class="fab fa-tiktok"></i>
                         </a>
                     </div>
+                     </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox-overlay" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <img src="" alt="Lightbox Image" class="lightbox-image" id="lightbox-image">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
