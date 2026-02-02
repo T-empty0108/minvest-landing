@@ -149,7 +149,7 @@ function createParticle(container) {
 function initNumberCounter() {
     const counters = document.querySelectorAll('[data-count]');
     
-    const observerOptions = { threshold: 0.5 };
+    const observerOptions = { threshold: 0.3 };
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -158,8 +158,8 @@ function initNumberCounter() {
                 const target = parseFloat(element.dataset.count);
                 const prefix = element.dataset.prefix || '';
                 const suffix = element.dataset.suffix || '';
-                const decimals = element.dataset.decimals || 0;
-                const duration = 2000;
+                const decimals = parseInt(element.dataset.decimals) || 0;
+                const duration = 2500;
                 
                 animateCounter(element, target, prefix, suffix, decimals, duration);
                 observer.unobserve(element);
@@ -168,6 +168,9 @@ function initNumberCounter() {
     }, observerOptions);
     
     counters.forEach(counter => {
+        // Set initial value
+        const prefix = counter.dataset.prefix || '';
+        counter.textContent = prefix + '0';
         observer.observe(counter);
     });
 }
@@ -525,3 +528,60 @@ document.head.appendChild(additionalStyles);
 ========================================== */
 console.log('%c✦ mInvest Smart Trading', 'font-size: 24px; font-weight: bold; color: #0072ff;');
 console.log('%cKhóa học Trading Forex 5 Tuần - mInvest', 'font-size: 14px; color: #00a2ff;');
+
+/* ==========================================
+   LIGHTBOX FUNCTIONALITY
+========================================== */
+function initLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const imageWrappers = document.querySelectorAll('[data-lightbox]');
+    
+    if (!lightbox || !lightboxImage) return;
+    
+    // Open lightbox when clicking on image
+    imageWrappers.forEach(wrapper => {
+        wrapper.addEventListener('click', function() {
+            const img = this.querySelector('img');
+            if (img) {
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+    
+    // Close lightbox when clicking close button
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', function(e) {
+            e.stopPropagation();
+            closeLightbox();
+        });
+    }
+    
+    // Close lightbox when clicking overlay
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+    
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+    
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Initialize lightbox after DOM loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initLightbox();
+});
