@@ -831,9 +831,9 @@ body {
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 12px;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.5;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
     text-align: left;
 }
 
@@ -932,7 +932,7 @@ body {
 }
 
 .benefits-lead {
-    font-size: 18px;
+    font-size: 20px;
     color: var(--color-text-secondary);
     max-width: 800px;
     margin: 0 auto;
@@ -962,6 +962,8 @@ body {
     height: 200px;
     overflow: hidden;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
 }
 
 .benefit-image img {
@@ -969,6 +971,7 @@ body {
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+    pointer-events: none;
 }
 
 .benefit-card:hover .benefit-image img {
@@ -1048,7 +1051,7 @@ body {
 }
 
 .benefit-description {
-    font-size: 16px;
+    font-size: 18px;
     color: var(--color-text-secondary);
     padding: 0 25px 25px;
     line-height: 1.8;
@@ -1187,8 +1190,8 @@ body {
 }
 
 .features-list li p {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.85);
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
     line-height: 1.6;
     padding-top: 10px;
 }
@@ -1285,6 +1288,8 @@ body {
     background: transparent;
     border: none;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
 }
 
 .timeline-image-wrapper:hover {
@@ -1298,6 +1303,7 @@ body {
     object-fit: contain;
     object-position: center;
     background: transparent;
+    pointer-events: none;
 }
 
 .timeline-title-zigzag {
@@ -1308,9 +1314,10 @@ body {
 }
 
 .timeline-text-zigzag {
-    font-size: 17px;
+    font-size: 20px;
     color: var(--color-text-secondary);
     line-height: 1.8;
+    text-align: justify;
 }
 
 /* Lightbox Styles - 2 cột với card nổi */
@@ -1543,7 +1550,7 @@ body {
 }
 
 .cta-subtitle {
-    font-size: 16px;
+    font-size: 18px;
     color: var(--color-text-secondary);
     margin-bottom: 40px;
 }
@@ -1554,7 +1561,7 @@ body {
 
 .cta-trust {
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 16px;
     color: var(--color-text-muted);
 }
 
@@ -1571,7 +1578,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     gap: 40px;
-    align-items: center;
+    align-items: flex-start;
 }
 
 /* Footer Logo */
